@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="omegasoft_foreign_trade_import_product_template_search" model="ir.ui.view">
+        <field name="name">omegasoft.foreign.trade.import.product.template.search</field>
+        <field name="model">product.template</field>
+        <field name= "inherit_id" ref="product.product_template_search_view" /> 
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='categ_id']" position="after">
+                <field name="concept_type" />
+                <field name="cost_type" />
+                <separator/>
+                    <group name="group_by" expand="1" string="Group by">
+                        <filter name="concept_type" string="concept type" context="{'group_by': 'concept_type'}"/>
+                        <filter name="cost_type" string="cost type" context="{'group_by': 'cost_type'}"/>
+                    </group>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="omegasoft_foreign_trade_import_sale_report_search" model="ir.ui.view">
+        <field name="name">omegasoft.foreign.trade.import.sale.report.search</field>
+        <field name="model">sale.report</field>
+        <field name= "inherit_id" ref="sale.view_order_product_search" /> 
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='company']" position="after">
+                <field name="concept_type" />
+                <field name="cost_type" />
+                <separator/>
+                    <group name="group_by" expand="1" string="Group by">
+                        <filter name="concept_type" string="concept type" context="{'group_by': 'concept_type'}"/>
+                        <filter name="cost_type" string="cost type" context="{'group_by': 'cost_type'}"/>
+                    </group>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="omegasoft_foreign_trade_import_purchase_report_search" model="ir.ui.view">
+        <field name="name">omegasoft.foreign.trade.import.purchase.report.search</field>
+        <field name="model">purchase.report</field>
+        <field name= "inherit_id" ref="purchase.view_purchase_order_search" /> 
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='company']" position="after">
+                <field name="concept_type" />
+                <field name="cost_type" />
+                <separator/>
+                    <group name="group_by" expand="1" string="Group by">
+                        <filter name="concept_type" string="concept type" context="{'group_by': 'concept_type'}"/>
+                        <filter name="cost_type" string="cost type" context="{'group_by': 'cost_type'}"/>
+                    </group>
+            </xpath>
+        </field>
+    </record>
+	
+</odoo>

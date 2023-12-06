@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<record id="res_config_settings_view_form_inherit_ft" model="ir.ui.view">
+			<field name="name">ft.res.config.settings.view.form.inherit.ft</field>
+			<field name="model">res.config.settings</field>
+        	<field name="priority" eval="3"/>
+			<field name="inherit_id" ref="base.res_config_settings_view_form"/>
+			<field name="arch" type="xml">
+				<xpath expr="//div[hasclass('settings')]" position="inside">
+					<div class="app_settings_block" data-string="Imports" string="Imports" data-key="omegasoft_foreing_trade_import">
+						<h2>Novelty</h2>
+						<div class="row mt16 o_settings_container" name="import_novelty_setting_container">
+							<div class="col-12 col-lg-6 o_setting_box" id="ft_novelty_type_container">
+								<div class="o_setting_left_pane">
+									<field name="group_ft_novelty"/>
+								</div>
+								<div class="o_setting_right_pane">
+									<label for="group_ft_novelty"/>
+									<div class="text-muted">
+										It allows defining events that may occur in an import process
+										in the form of a log so that they will be tied to the import page
+										to make it easier to assess what happened during the import.
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<h2>Containers</h2>
+						<div class="row mt16 o_settings_container" name="import_capacities_setting_container">
+							<div class="col-12 col-lg-6 o_setting_box" id="ft_container">
+								<div class="o_setting_left_pane">
+									<field name="capacities_container"/>
+								</div>
+								<div class="o_setting_right_pane">
+									<label for="capacities_container"/>
+									<div class="text-muted">
+										It allows to establish the measurement by containers 
+										in the calculations of the cost structure of products.
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<h2>Tax</h2>
+						<div class="row mt16 o_settings_container" name="import_taxes">
+							<div class="col-12 col-lg-6 o_setting_box" id="ft_taxes">
+								<div class="o_setting_right_pane">
+									<span class="o_form_label">Import purchase tax</span>
+									<div class="text-muted">
+										The tax that will be used to calculate the forecast tab 
+										and the taxes related to imports must be established.
+									</div>
+									<div class="row mt16">
+										<field name="import_purchase_tax" options="{'no_create': 1, 'no_open': 1}" context="{'active_test': False}"/>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</xpath>
+			</field>
+	</record>
+
+	<record id="omegasoft_foreing_trade_import_configuration_action" model="ir.actions.act_window">
+		<field name="name">Settings import</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">res.config.settings</field>
+		<field name="view_mode">form</field>
+		<field name="target">inline</field>
+		<field name="context">{'module' : 'omegasoft_foreing_trade_import', 'bin_size': False}</field>
+	</record>
+
+	<menuitem id="omegasoft_foreing_trade_import_configuration" name="Settings" parent="omegasoft_foreing_trade_import.omegasoft_foreing_trade_import_menu_configuration" action="omegasoft_foreing_trade_import_configuration_action" sequence="0"/>
+</odoo>

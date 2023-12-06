@@ -1,0 +1,113 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* omegasoft_sales_goals
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-07-19 21:39+0000\n"
+"PO-Revision-Date: 2023-07-19 21:39+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: omegasoft_sales_goals
+#: model:ir.model.fields,field_description:omegasoft_sales_goals.field_sales_goal_line__accumulated_goal
+msgid "Accumulated goal"
+msgstr "Meta acumulada"
+
+#. module: omegasoft_sales_goals
+#: model:ir.model.fields,field_description:omegasoft_sales_goals.field_sales_goal__company_id
+#: model:ir.model.fields,field_description:omegasoft_sales_goals.field_sales_goal_line__company_id
+msgid "Company"
+msgstr "Compañía"
+
+#. module: omegasoft_sales_goals
+#: model:ir.model.fields,field_description:omegasoft_sales_goals.field_sales_goal_line__currency_id
+msgid "Currency"
+msgstr "Moneda"
+
+#. module: omegasoft_sales_goals
+#: model:ir.model.fields,field_description:omegasoft_sales_goals.field_sales_goal__name_date
+#: model_terms:ir.ui.view,arch_db:omegasoft_sales_goals.sales_goal_line_report_search
+#: model_terms:ir.ui.view,arch_db:omegasoft_sales_goals.sales_goal_search
+msgid "Date"
+msgstr "Fecha"
+
+#. module: omegasoft_sales_goals
+#: model:ir.model.fields,field_description:omegasoft_sales_goals.field_sales_goal__end_date
+#: model:ir.model.fields,field_description:omegasoft_sales_goals.field_sales_goal_line__sales_goal_end_date
+msgid "End Date"
+msgstr "Fecha Final"
+
+#. module: omegasoft_sales_goals
+#: model:ir.model.fields,field_description:omegasoft_sales_goals.field_sales_goal_line__goal
+msgid "Goal"
+msgstr "Meta"
+
+#. module: omegasoft_sales_goals
+#: model:ir.model.fields,field_description:omegasoft_sales_goals.field_sales_goal__line_ids
+#: model_terms:ir.ui.view,arch_db:omegasoft_sales_goals.sales_goal_form
+msgid "Goals"
+msgstr "Metas"
+
+#. module: omegasoft_sales_goals
+#: model_terms:ir.ui.view,arch_db:omegasoft_sales_goals.sales_goal_line_report_search
+#: model_terms:ir.ui.view,arch_db:omegasoft_sales_goals.sales_goal_search
+msgid "Group By"
+msgstr "Agrupar"
+
+
+#. module: omegasoft_sales_goals
+#: model:ir.model.fields,field_description:omegasoft_sales_goals.field_sales_goal_line__percentage
+msgid "Percentage"
+msgstr "Porcentaje"
+
+#. module: omegasoft_sales_goals
+#: model:ir.model,name:omegasoft_sales_goals.model_sales_goal
+msgid "Sales Goal"
+msgstr "Metas de ventas"
+
+#. module: omegasoft_sales_goals
+#: model:ir.model,name:omegasoft_sales_goals.model_sales_goal_line
+msgid "Sales Goal Line"
+msgstr "Línea de meta de ventas"
+
+
+#. module: omegasoft_sales_goals
+#: model:ir.actions.act_window,name:omegasoft_sales_goals.sales_goal_action
+#: model:ir.ui.menu,name:omegasoft_sales_goals.sales_goal_lines_report_menu
+#: model:ir.ui.menu,name:omegasoft_sales_goals.sales_goal_root_menu
+msgid "Sales Goals"
+msgstr "Metas de ventas"
+
+#. module: omegasoft_sales_goals
+#: model:ir.actions.act_window,name:omegasoft_sales_goals.sales_goal_report_action
+msgid "Sales Goals Report"
+msgstr "Informe de metas de ventas"
+
+#. module: omegasoft_sales_goals
+#: model:ir.model.fields,field_description:omegasoft_sales_goals.field_sales_goal_line__sales_goal_id
+msgid "Sales goal"
+msgstr "Meta"
+
+#. module: omegasoft_sales_goals
+#: model:ir.model.fields,field_description:omegasoft_sales_goals.field_sales_goal_line__user_id
+msgid "Sales person"
+msgstr "Ejecutivo de venta"
+
+#. module: omegasoft_sales_goals
+#: model:ir.model.fields,field_description:omegasoft_sales_goals.field_sales_goal__start_date
+#: model:ir.model.fields,field_description:omegasoft_sales_goals.field_sales_goal_line__sales_goal_start_date
+msgid "Start Date"
+msgstr "Fecha de Inicio"
+
+#. module: omegasoft_sales_goals
+#: model_terms:ir.ui.view,arch_db:omegasoft_sales_goals.sales_goal_form
+#: model_terms:ir.ui.view,arch_db:omegasoft_sales_goals.sales_goal_report_tree
+msgid "Total"
+msgstr ""

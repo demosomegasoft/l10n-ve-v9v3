@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="ft_import_purchase_requisition_order_form_inherit" model="ir.ui.view">
+		<field name="name">ft.import.purchase.requisition.order.form.inherit</field>
+		<field name="model">purchase.requisition</field>
+		<field name="inherit_id" ref="purchase_requisition.view_purchase_requisition_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="//field[@name='line_ids']/tree/field[@name='product_qty']" position="after">
+				<field name="certificate_danger_alert" invisible="1"/>
+				<field name="certificate_warning_alert" invisible="1"/>
+				<field name="certificate_success_alert" invisible="1"/>
+				<field name="certificate_muted_alert" invisible="1"/>
+				<button readonly="1" name="button_pass" type="object" icon="fa-certificate text-danger" attrs="{'invisible': [('certificate_danger_alert', '=', False)]}"/>
+				<button readonly="1" name="button_pass" type="object" icon="fa-certificate text-warning" attrs="{'invisible': [('certificate_warning_alert', '=', False)]}"/>
+				<button readonly="1" name="button_pass" type="object" icon="fa-certificate text-muted" attrs="{'invisible': [('certificate_muted_alert', '=', False)]}"/>
+				<button readonly="1" name="button_pass" type="object" icon="fa-certificate text-success" attrs="{'invisible': [('certificate_success_alert', '=', False)]}"/>
+			</xpath>
+
+		</field>
+	</record>
+</odoo>

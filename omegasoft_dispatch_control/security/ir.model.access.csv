@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_dispatch_control,model.access.dispatch.control,model_dispatch_control,base.group_user,1,1,1,1
+access_dispatch_product_line,model.access.dispatch.product.line,model_dispatch_product_line,base.group_user,1,1,1,1

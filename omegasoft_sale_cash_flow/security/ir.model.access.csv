@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_cash_flow_report,access.cash.flow.report,model_cash_flow_report,base.group_user,1,1,1,1
+access_cash_flow_report_line,access.cash.flow.report.line,model_cash_flow_report_line,base.group_user,1,1,1,1
+access_cash_flow_report_summary_line,access.cash.flow.report.summary.line,model_cash_flow_report_summary_line,base.group_user,1,1,1,1

@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="ft_agreement_view_form" model="ir.ui.view">
+        <field name="name">ft.agreement.view.form</field>
+        <field name="model">ft.agreement</field>
+        <field name="arch" type="xml">
+            <form string="Agreements">
+                <sheet>
+                    <field name="active" invisible="1" />
+                    <group name='top'>
+                        <group name="left">
+                            <field name="name" required="1"/>
+                            <field name="code"/>
+                            <div style="margin: 0px; padding: 0px;" colspan="2">
+                                <p style="font-size: 10pt; border-bottom: 1px solid grey">Validity</p>
+                            </div>
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+                        </group>
+                        <group name="rigth">
+                            <field name="company_id" options="{'no_create': True}" groups="base.group_no_one" readonly="1"/>
+                        </group>
+                    </group>
+                    <notebook colspan="4">
+                        <page name="special_tariffs" string="Special Tariffs">
+                            <field name="line_ids">
+                                <tree editable="bottom" nolabel="1">
+                                    <field name="agreement_id" invisible="1"/>
+                                    <field name="duty_id" required="1" options="{'no_create': 1}"/>
+                                    <field name="description"/>
+                                    <field name="rate"/>
+                                    <field name="new_rate"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>            
+                </sheet>
+                <div class="oe_chatter">
+					<field name="message_follower_ids"/>
+					<field name="message_ids"/>
+				</div>
+            </form>
+        </field>
+    </record>
+
+    <record id="ft_agreement_view_tree" model="ir.ui.view">
+        <field name="name">ft.agreement.view.tree</field>
+        <field name="model">ft.agreement</field>
+        <field name="arch" type="xml">
+            <tree string="Agreement">
+                <field name="name" />
+                <field name="code" />
+                <field name="start_date"/>
+                <field name="end_date"/>
+                <field name="company_id" groups="base.group_no_one"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="fr_agreement_search" model="ir.ui.view">
+        <field name="name">ft.agreement.search</field>
+        <field name="model">ft.agreement</field>
+        <field name="arch" type="xml">
+            <search>
+                <separator />
+                <filter name="archived" string="Archived" domain="[('active', '=', False)]" />
+            </search>
+        </field>
+    </record>
+
+    <record id="ft_agreement_action" model="ir.actions.act_window">
+        <field name="name">Agreement</field>
+        <field name="res_model">ft.agreement</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- actions -->
+    <menuitem id="ft_agreement_config" name="Agreement" action="ft_agreement_action" parent="omegasoft_foreing_trade_import.omegasoft_foreing_trade_import_menu_configuration" sequence="13" />
+</odoo>

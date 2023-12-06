@@ -1,0 +1,192 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* omegasoft_credit_limit
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-08-22 15:54+0000\n"
+"PO-Revision-Date: 2023-08-22 15:54+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: omegasoft_credit_limit
+#: model_terms:ir.ui.view,arch_db:omegasoft_credit_limit.view_sale_order_form_inherit
+msgid ""
+"<br/>\n"
+"                            Sales without invoice:"
+msgstr ""
+"<br/>\n"
+"                            Pedidos confirmados sin facturar:"
+
+#. module: omegasoft_credit_limit
+#: model:ir.model.fields,help:omegasoft_credit_limit.field_res_partner__active_credit
+#: model:ir.model.fields,help:omegasoft_credit_limit.field_res_users__active_credit
+#: model:ir.model.fields,help:omegasoft_credit_limit.field_sale_order__active_credit
+msgid "Activate the credit limit feature"
+msgstr "Activar la función de límite de crédito"
+
+#. module: omegasoft_credit_limit
+#: model:ir.model.fields,field_description:omegasoft_credit_limit.field_res_partner__active_credit
+#: model:ir.model.fields,field_description:omegasoft_credit_limit.field_res_users__active_credit
+#: model:ir.model.fields,field_description:omegasoft_credit_limit.field_sale_order__active_credit
+msgid "Active Credit"
+msgstr "Crédito activo"
+
+#. module: omegasoft_credit_limit
+#: model:ir.model.fields,field_description:omegasoft_credit_limit.field_res_partner__credit_total_due
+#: model:ir.model.fields,field_description:omegasoft_credit_limit.field_res_users__credit_total_due
+#: model:ir.model.fields,field_description:omegasoft_credit_limit.field_sale_order__credit_total_due
+msgid "Amount Due"
+msgstr "Importe adeudado"
+
+#. module: omegasoft_credit_limit
+#: model:ir.model.fields,field_description:omegasoft_credit_limit.field_res_partner__amount_limit
+#: model:ir.model.fields,field_description:omegasoft_credit_limit.field_res_users__amount_limit
+#: model:ir.model.fields,field_description:omegasoft_credit_limit.field_sale_order__amount_limit
+msgid "Amount Limit"
+msgstr "Límite de crédito"
+
+#. module: omegasoft_credit_limit
+#: model:ir.model.fields,field_description:omegasoft_credit_limit.field_res_partner__credit_total_overdue
+#: model:ir.model.fields,field_description:omegasoft_credit_limit.field_res_users__credit_total_overdue
+#: model:ir.model.fields,field_description:omegasoft_credit_limit.field_sale_order__credit_total_overdue
+msgid "Amount Overdue"
+msgstr "Deuda vencida"
+
+#. module: omegasoft_credit_limit
+#: model_terms:ir.ui.view,arch_db:omegasoft_credit_limit.view_sale_order_form_inherit
+msgid "Amount due:"
+msgstr "Importe adeudado:"
+
+#. module: omegasoft_credit_limit
+#: model_terms:ir.ui.view,arch_db:omegasoft_credit_limit.view_sale_order_form_inherit
+msgid "Approve Sale Order"
+msgstr "Aprobar"
+
+#. module: omegasoft_credit_limit
+#: model:ir.model.fields.selection,name:omegasoft_credit_limit.selection__sale_order__approval_state__approved
+msgid "Approved"
+msgstr "Aprobado"
+
+#. module: omegasoft_credit_limit
+#: model_terms:ir.ui.view,arch_db:omegasoft_credit_limit.view_sale_order_form_inherit
+msgid "Available credit:"
+msgstr "Crédito disponible:"
+
+#. module: omegasoft_credit_limit
+#: model:ir.model.fields.selection,name:omegasoft_credit_limit.selection__sale_order__approval_state__canceled
+msgid "Canceled"
+msgstr "Cancelado"
+
+#. module: omegasoft_credit_limit
+#: model:ir.model,name:omegasoft_credit_limit.model_res_partner
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: omegasoft_credit_limit
+#: model:ir.model.fields,field_description:omegasoft_credit_limit.field_res_partner__credit_available
+#: model:ir.model.fields,field_description:omegasoft_credit_limit.field_res_users__credit_available
+#: model:ir.model.fields,field_description:omegasoft_credit_limit.field_sale_order__credit_available
+msgid "Credit Available"
+msgstr "Credito disponible"
+
+#. module: omegasoft_credit_limit
+#: model:ir.model.fields,field_description:omegasoft_credit_limit.field_res_partner__credit_currency_id
+#: model:ir.model.fields,field_description:omegasoft_credit_limit.field_res_users__credit_currency_id
+#: model:ir.model.fields,field_description:omegasoft_credit_limit.field_sale_order__credit_currency_id
+msgid "Credit Currency"
+msgstr "Moneda de crédito"
+
+#. module: omegasoft_credit_limit
+#: model_terms:ir.ui.view,arch_db:omegasoft_credit_limit.view_partner_form_inherit
+msgid "Credit limit"
+msgstr "Límite de crédito"
+
+#. module: omegasoft_credit_limit
+#: model_terms:ir.ui.view,arch_db:omegasoft_credit_limit.view_sale_order_form_inherit
+msgid "Credit limit:"
+msgstr "Límite de crédito:"
+
+#. module: omegasoft_credit_limit
+#: model:ir.model.fields,field_description:omegasoft_credit_limit.field_res_partner__currency_domain_ids
+#: model:ir.model.fields,field_description:omegasoft_credit_limit.field_res_users__currency_domain_ids
+msgid "Currency Domain"
+msgstr "Dominio de moneda"
+
+#. module: omegasoft_credit_limit
+#: model:ir.model.fields,field_description:omegasoft_credit_limit.field_sale_order__exceeded_amount
+msgid "Exceeded amount"
+msgstr "Monto excedido"
+
+#. module: omegasoft_credit_limit
+#: model:ir.model.fields,field_description:omegasoft_credit_limit.field_sale_order__limit_exceeded
+msgid "Limit Exceeded"
+msgstr "Límite sobrepasado"
+
+#. module: omegasoft_credit_limit
+#: model:ir.model.fields.selection,name:omegasoft_credit_limit.selection__sale_order__approval_state__not_approved
+msgid "Not Approved"
+msgstr "Sin Aprobar"
+
+#. module: omegasoft_credit_limit
+#: model:ir.model.fields,field_description:omegasoft_credit_limit.field_sale_order__order_amount
+msgid "Order Amount"
+msgstr "Monto orden"
+
+#. module: omegasoft_credit_limit
+#: model_terms:ir.ui.view,arch_db:omegasoft_credit_limit.view_sale_order_form_inherit
+msgid "Reject Sale Order"
+msgstr "Rechazar"
+
+#. module: omegasoft_credit_limit
+#: model:ir.model.fields.selection,name:omegasoft_credit_limit.selection__sale_order__approval_state__rejected
+msgid "Rejected"
+msgstr "Rechazado"
+
+#. module: omegasoft_credit_limit
+#: model_terms:ir.ui.view,arch_db:omegasoft_credit_limit.view_sale_order_form_inherit
+msgid "Request for approval"
+msgstr "Solicitar Aprobación"
+
+#. module: omegasoft_credit_limit
+#: model:res.groups,name:omegasoft_credit_limit.group_sale_order_approver
+msgid "Sale Order Approver"
+msgstr "Aprobador de Venta"
+
+#. module: omegasoft_credit_limit
+#: model:ir.model.fields,field_description:omegasoft_credit_limit.field_res_partner__sale_invoiceless_amount
+#: model:ir.model.fields,field_description:omegasoft_credit_limit.field_res_users__sale_invoiceless_amount
+#: model:ir.model.fields,field_description:omegasoft_credit_limit.field_sale_order__sale_invoiceless_amount
+msgid "Sale order invoiceless"
+msgstr "Pedidos confirmados sin facturar"
+
+#. module: omegasoft_credit_limit
+#: model:ir.model,name:omegasoft_credit_limit.model_sale_order
+msgid "Sales Order"
+msgstr "Pedido de venta"
+
+#. module: omegasoft_credit_limit
+#: model:ir.model.fields,field_description:omegasoft_credit_limit.field_sale_order__approval_state
+msgid "Status"
+msgstr "Estatus"
+
+#. module: omegasoft_credit_limit
+#: model_terms:ir.ui.view,arch_db:omegasoft_credit_limit.view_sale_order_form_inherit
+msgid "The customer has exceeded the credit limit for:"
+msgstr "El cliente ha superado el límite de crédito por:"
+
+#. module: omegasoft_credit_limit
+#: model:ir.model.fields.selection,name:omegasoft_credit_limit.selection__sale_order__approval_state__to_approve
+msgid "To Approve"
+msgstr "Por Aprobar"
+
+#. module: omegasoft_credit_limit
+#: model_terms:ir.ui.view,arch_db:omegasoft_credit_limit.view_sale_order_form_inherit
+msgid "expired amount:"
+msgstr "Deuda vencida:"

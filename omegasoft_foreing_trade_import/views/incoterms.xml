@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem id="incoterms_config" name="Incoterms" action="account.action_incoterms_tree" parent="omegasoft_foreing_trade_import.omegasoft_foreing_trade_import_menu_configuration" sequence="17" />
+</odoo>

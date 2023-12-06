@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+	<record id="ft_storage_tree" model="ir.ui.view">
+		<field name="name">ft.storage.tree</field>
+		<field name="model">ft.storage</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="name"/>
+				<field name="code" />
+				<field name="company_id" groups="base.group_no_one"/>
+			</tree>
+		</field>
+	</record>
+
+	<record id="ft_storage_form" model="ir.ui.view">
+		<field name="name">ft.storage.form</field>
+		<field name="model">ft.storage</field>
+		<field name="arch" type="xml">
+			<form string="Import labels">
+				<sheet>
+					<field name="active" invisible="1" />
+					<group name="top">
+						<group name="left">
+							<field name="name" required="1"/>
+							<field name="code" required="1"/>
+						</group>
+					</group>
+					<notebook>
+						<page name="delay_fee" string="Delay fee">
+							<field name="delay_fee_ids">
+								<tree editable="bottom" nolabel="1">
+									<field name="storage_id" invisible="1"/>
+									<field name="tier" readonly="1"/>
+									<field name="fee" required="1"/>
+									<field name="currency_id" invisible="1"/>
+									<field name="fee_ref"/>
+									<field name="currency_ref_id" invisible="1"/>
+									<field name="initial_day"/>
+									<field name="final_day"/>
+								</tree>
+							</field>
+						</page>
+                        <page name="vigilance_fee" string="Vigilance fee">
+							<field name="vigilance_fee_ids">
+								<tree editable="bottom" nolabel="1">
+									<field name="storage_id" invisible="1"/>
+									<field name="tier" readonly="1"/>
+									<field name="fee" required="1"/>
+									<field name="currency_id" invisible="1"/>
+									<field name="fee_ref"/>
+									<field name="currency_ref_id" invisible="1"/>
+									<field name="initial_day"/>
+									<field name="final_day"/>
+								</tree>
+							</field>
+						</page>
+                        <page name="associates_expenses" string="Associated Expenses">
+							<field name="associated_expenses_ids">
+								<tree editable="top" nolabel="1">
+									<field name="storage_id" invisible="1"/>
+                                    <field name="product_id" required="1"/>
+                                    <field name="concept_type" required="1"/>
+                                    <field name="cost_type" required="1"/>
+                                    <field name="fee"/>
+                                    <field name="currency_id" invisible="1"/>
+                                    <field name="fee_ref"/>
+                                    <field name="currency_ref_id" invisible="1"/>
+								</tree>
+							</field>
+						</page>
+					</notebook>
+				</sheet>
+				<div class="oe_chatter">
+					<field name="message_follower_ids"/>
+					<field name="message_ids"/>
+				</div>
+			</form>
+		</field>
+	</record>
+
+	<record id="ft_storage_search" model="ir.ui.view">
+		<field name="name">ft.storage.search</field>
+		<field name="model">ft.storage</field>
+		<field name="arch" type="xml">
+			<search>
+				<separator />
+				<filter name="archived" string="Archived" domain="[('active', '=', False)]" />
+			</search>
+		</field>
+	</record>
+
+	<record id="ft_storage_action" model="ir.actions.act_window">
+        <field name="name">Storage</field>
+        <field name="res_model">ft.storage</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+	<!-- actions -->
+	<menuitem id="ft_storage_menu" name="Warehouses" action="ft_storage_action" parent="omegasoft_foreing_trade_import.omegasoft_foreing_trade_import_menu_configuration" sequence="15" />
+</odoo>

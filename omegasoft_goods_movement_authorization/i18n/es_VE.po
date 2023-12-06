@@ -1,0 +1,233 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* omegasoft_goods_movement_authorization
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-08-01 19:24+0000\n"
+"PO-Revision-Date: 2023-08-01 19:24+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: omegasoft_goods_movement_authorization
+#. odoo-python
+#: code:addons/extra-addons/Pneus/omegasoft_goods_movement_authorization/models/goods_movement_authorization.py:0
+#: code:addons/omegasoft_goods_movement_authorization/models/goods_movement_authorization.py:0
+#, python-format
+msgid ""
+"\n"
+"            <br/>\n"
+"            <table>\n"
+"                <tr>\n"
+"                    <th style=\"border-right: 1px solid black;\">Compañía</th>\n"
+"                    <td>{company}</td>\n"
+"                </tr>\n"
+"                <tr>\n"
+"                    <th style=\"border-right: 1px solid black\">RIF</th>\n"
+"                    <td>{vat}</td>\n"
+"                </tr>\n"
+"                <tr>\n"
+"                    <th style=\"border-right: 1px solid black\">Dirección</th>\n"
+"                    <td>{address}</td>\n"
+"                </tr>\n"
+"            </table> \n"
+"            <br>\n"
+"            "
+msgstr ""
+
+#. module: omegasoft_goods_movement_authorization
+#. odoo-python
+#: code:addons/extra-addons/Pneus/omegasoft_goods_movement_authorization/models/goods_movement_authorization.py:0
+#: code:addons/omegasoft_goods_movement_authorization/models/goods_movement_authorization.py:0
+#, python-format
+msgid "%d of %B of %Y"
+msgstr "%d de %B de %Y"
+
+#. module: omegasoft_goods_movement_authorization
+#: model:ir.model.fields,field_description:omegasoft_goods_movement_authorization.field_movement_authorization__active
+msgid "Active"
+msgstr "Activo"
+
+#. module: omegasoft_goods_movement_authorization
+#: model_terms:ir.ui.view,arch_db:omegasoft_goods_movement_authorization.movement_authorization_search
+msgid "Archived"
+msgstr "Archivado"
+
+#. module: omegasoft_goods_movement_authorization
+#: model:ir.model.fields,field_description:omegasoft_goods_movement_authorization.field_movement_authorization__brand_id
+msgid "Brand"
+msgstr "Marca"
+
+#. module: omegasoft_goods_movement_authorization
+#: model:ir.model.fields,field_description:omegasoft_goods_movement_authorization.field_movement_authorization__color
+msgid "Color"
+msgstr ""
+
+#. module: omegasoft_goods_movement_authorization
+#: model:ir.model.fields,help:omegasoft_goods_movement_authorization.field_movement_authorization__color
+msgid "Color of the vehicle"
+msgstr "Color del vehículo"
+
+#. module: omegasoft_goods_movement_authorization
+#: model:ir.model.fields,field_description:omegasoft_goods_movement_authorization.field_movement_authorization__company_id
+#: model:ir.model.fields,help:omegasoft_goods_movement_authorization.field_movement_authorization__company_id
+msgid "Company"
+msgstr "Compañia"
+
+#. module: omegasoft_goods_movement_authorization
+#: model:ir.model.fields,field_description:omegasoft_goods_movement_authorization.field_movement_authorization__date
+msgid "Date"
+msgstr "Fecha"
+
+#. module: omegasoft_goods_movement_authorization
+#: model:ir.model.fields,field_description:omegasoft_goods_movement_authorization.field_movement_authorization__display_name
+msgid "Display Name"
+msgstr "Nombre"
+
+#. module: omegasoft_goods_movement_authorization
+#: model:ir.model.fields,field_description:omegasoft_goods_movement_authorization.field_movement_authorization__driver_id
+msgid "Driver"
+msgstr "Conductor"
+
+#. module: omegasoft_goods_movement_authorization
+#: model_terms:ir.ui.view,arch_db:omegasoft_goods_movement_authorization.movement_authorization_form
+msgid "Driver Data"
+msgstr "Datos del conductor"
+
+#. module: omegasoft_goods_movement_authorization
+#: model:ir.model.fields,field_description:omegasoft_goods_movement_authorization.field_movement_authorization__dispatch_control_ids
+#: model_terms:ir.ui.view,arch_db:omegasoft_goods_movement_authorization.movement_authorization_form
+msgid "Gestión de despacho"
+msgstr "Gestión de despacho"
+
+#. module: omegasoft_goods_movement_authorization
+#: model:ir.actions.act_window,name:omegasoft_goods_movement_authorization.movement_authorization_action
+msgid "Good Movement Authorization"
+msgstr "Autorización de Traslado de Mercancías"
+
+#. module: omegasoft_goods_movement_authorization
+#: model:ir.model,name:omegasoft_goods_movement_authorization.model_movement_authorization
+#: model:ir.ui.menu,name:omegasoft_goods_movement_authorization.movement_authorization_config
+#: model_terms:ir.ui.view,arch_db:omegasoft_goods_movement_authorization.movement_authorization_form
+msgid "Goods Movement Authorization"
+msgstr "Autorización de Traslado de Mercancías"
+
+#. module: omegasoft_goods_movement_authorization
+#: model_terms:ir.ui.view,arch_db:omegasoft_goods_movement_authorization.movement_authorization_tree
+msgid "Goods Movement Authorizations"
+msgstr "Autorizaciones de Traslado de Mercancías"
+
+#. module: omegasoft_goods_movement_authorization
+#: model_terms:ir.ui.view,arch_db:omegasoft_goods_movement_authorization.movement_authorization_search
+msgid "Group By"
+msgstr "Agrupar por"
+
+
+#. module: omegasoft_goods_movement_authorization
+#: model:ir.model.fields,field_description:omegasoft_goods_movement_authorization.field_movement_authorization__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: omegasoft_goods_movement_authorization
+#: model:ir.model.fields,help:omegasoft_goods_movement_authorization.field_movement_authorization__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: omegasoft_goods_movement_authorization
+#: model:ir.model.fields,field_description:omegasoft_goods_movement_authorization.field_movement_authorization__vat
+msgid "Identification"
+msgstr "Documento de Identidad"
+
+#. module: omegasoft_goods_movement_authorization
+#: model:ir.model.fields.selection,name:omegasoft_goods_movement_authorization.selection__movement_authorization__state__in_progress
+msgid "In Progress"
+msgstr "En Progreso"
+
+#. module: omegasoft_goods_movement_authorization
+#: model:ir.model.fields,field_description:omegasoft_goods_movement_authorization.field_movement_authorization__license_plate
+msgid "License Plate"
+msgstr "Placa"
+
+#. module: omegasoft_goods_movement_authorization
+#: model:ir.model.fields,help:omegasoft_goods_movement_authorization.field_movement_authorization__license_plate
+msgid "License plate number of the vehicle (i = plate number for a car)"
+msgstr "Matrícula del vehículo (i = matrícula de un coche)"
+
+
+#. module: omegasoft_goods_movement_authorization
+#: model:ir.model.fields,field_description:omegasoft_goods_movement_authorization.field_movement_authorization__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: omegasoft_goods_movement_authorization
+#. odoo-python
+#: code:addons/extra-addons/Pneus/omegasoft_goods_movement_authorization/models/goods_movement_authorization.py:0
+#: code:addons/extra-addons/Pneus/omegasoft_goods_movement_authorization/models/goods_movement_authorization.py:0
+#: code:addons/omegasoft_goods_movement_authorization/models/goods_movement_authorization.py:0
+#: code:addons/omegasoft_goods_movement_authorization/models/goods_movement_authorization.py:0
+#, python-format
+msgid "New"
+msgstr "Nuevo"
+
+#. module: omegasoft_goods_movement_authorization
+#: model:ir.model.fields,field_description:omegasoft_goods_movement_authorization.field_movement_authorization__sealing
+msgid "Sealing"
+msgstr "Precinto"
+
+#. module: omegasoft_goods_movement_authorization
+#: model:ir.model.fields,help:omegasoft_goods_movement_authorization.field_movement_authorization__active
+msgid "Set active to false to hide the children tag without removing it."
+msgstr ""
+"Establezca active en false para ocultar la etiqueta children sin eliminarla."
+
+#. module: omegasoft_goods_movement_authorization
+#: model:ir.model.fields,field_description:omegasoft_goods_movement_authorization.field_movement_authorization__shipping_tables
+msgid "Shipping Tables"
+msgstr "Tablas de envío"
+
+#. module: omegasoft_goods_movement_authorization
+#: model_terms:ir.ui.view,arch_db:omegasoft_goods_movement_authorization.movement_authorization_search
+msgid "State"
+msgstr "Estado"
+
+#. module: omegasoft_goods_movement_authorization
+#: model_terms:ir.ui.view,arch_db:omegasoft_goods_movement_authorization.movement_authorization_form
+msgid "Validate"
+msgstr "Validar"
+
+#. module: omegasoft_goods_movement_authorization
+#: model:ir.model.fields.selection,name:omegasoft_goods_movement_authorization.selection__movement_authorization__state__done
+msgid "Validated"
+msgstr "Validado"
+
+#. module: omegasoft_goods_movement_authorization
+#. odoo-python
+#: code:addons/extra-addons/Pneus/omegasoft_goods_movement_authorization/models/goods_movement_authorization.py:0
+#: code:addons/omegasoft_goods_movement_authorization/models/goods_movement_authorization.py:0
+#, python-format
+msgid "Validated authorizations cannot be deleted."
+msgstr "No se pueden eliminar autorizaciones validadas."
+
+#. module: omegasoft_goods_movement_authorization
+#: model:ir.model.fields,field_description:omegasoft_goods_movement_authorization.field_movement_authorization__vehicle_id
+msgid "Vehicle"
+msgstr "Vehículo"
+
+#. module: omegasoft_goods_movement_authorization
+#: model:ir.model.fields,field_description:omegasoft_goods_movement_authorization.field_movement_authorization__state
+msgid "state"
+msgstr "Estado"
+
+#. module: omegasoft_goods_movement_authorization
+#. odoo-python
+#: code:addons/extra-addons/Pneus/omegasoft_goods_movement_authorization/models/goods_movement_authorization.py:0
+#: code:addons/omegasoft_goods_movement_authorization/models/goods_movement_authorization.py:0
+#, python-format
+msgid "zip code "
+msgstr "Zona Postal "

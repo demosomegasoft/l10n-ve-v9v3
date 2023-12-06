@@ -1,0 +1,363 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <!-- Tree -->
+	<record id="ft_import_tree" model="ir.ui.view">
+		<field name="name">ft.import.tree</field>
+		<field name="model">ft.import</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="name"/>
+				<field name="customs_agent_id"/>
+				<field name="shipping_company_id"/>
+				<field name="state"/>
+			</tree>
+		</field>
+	</record>
+
+    <!-- Form -->
+	<record id="ft_import_form" model="ir.ui.view">
+		<field name="name">ft.import.form</field>
+		<field name="model">ft.import</field>
+		<field name="arch" type="xml">
+			<form string="Import">
+				<header>
+					<button name="button_send_mail" string="send by e-mail" type="object" class="btn-primary" attrs="{'invisible':[('state', 'not in',('port', 'received', 'closed_folio'))]}"/>
+                    
+					<button name="action_cancel"
+                        string="Cancel"
+                        type="object"
+                        attrs="{'invisible':[('state', 'not in',('new', 'prod', 'nav', 'ship', 'port', 'received'))]}"
+                        class="btn-primary"
+                        confirm="You are about to move on to the next stage 'Canceled'. After confirming, you will not be able to return to the previous one. Would you like to continue?"/>
+                    
+					<button name="action_prod" 
+                        string="Move to Next State" 
+                        type="object" 
+                        states="new" 
+                        class="btn-primary" 
+                        confirm="You're about to move to the next stage 'In Production'. After confirming you won't be able to return to the previous one. Would you like to continue?"/>
+                    <button name="action_ship"
+                        type="object" 
+                        string="Move to Next State"
+                        states="prod"
+                        class="btn-primary"
+                        confirm="You're about to move to the next stage 'Coordinating Shipment'. After confirming you won't be able to return to the previous one. Would you like to continue?"/>
+                    <button name="action_nav"
+                        string="Move to Next State"
+                        type="object"
+                        states="ship"
+                        class="btn-primary"
+                        confirm="You're about to move to the next stage 'Navigating'. After confirming you won't be able to return to the previous one. Would you like to continue?"/>
+                    <button name="action_port"
+                        string="Move to Next State"
+                        type="object"
+                        states="nav"
+                        class="btn-primary"
+                        confirm="You're about to move to the next stage 'In Port'. After confirming you won't be able to return to the previous one. Would you like to continue?"/>
+                    <button name="action_received"
+                        string="Move to Next State"
+                        type="object"
+                        states="port"
+                        class="btn-primary"
+                        confirm="You're about to move to the next stage 'Received'. After confirming you won't be able to return to the previous one. Would you like to continue?"/>
+					<button name="action_closed_folio"
+                        string="Close import"
+                        type="object"
+                        states="received"
+                        class="btn-primary"
+                        confirm="You are about to move on to the next stage 'Closed folio'. After confirming, you will not be able to return to the previous one. Would you like to continue?"/>
+
+                    <button name="action_new"
+                        string="Draft"
+                        type="object"
+                        attrs="{'invisible':[('state', 'not in',('closed_folio', 'cancel'))]}"
+                        class="btn-primary"
+                        confirm="You are about to move on to the next stage 'New'. After confirming, you will not be able to return to the previous one. Would you like to continue?"
+                        groups="base.group_no_one"/>
+
+					<field name="state" widget="statusbar"/>
+				</header>
+				<sheet>
+					<div class="oe_button_box" name="button_box">
+						<button type="object"
+							name="action_view_forecast"
+							class="oe_stat_button"
+							icon="fa-bar-chart-o" attrs="{'invisible':[('forecast_purchase_order','=', 0)]}" groups="stock.group_stock_user">
+							<field string="Forecast" name="forecast_purchase_order" widget="statinfo"/>
+						</button>
+
+						<button class="oe_stat_button"
+							name="action_view_purchase_orders"
+							type="object"
+							groups="purchase.group_purchase_user"
+							icon="fa-pencil-square-o"
+							attrs="{'invisible': [('purchase_order_count', '=', 0)]}">
+							<field string="Purchases" name="purchase_order_count" widget="statinfo"/>
+                		</button>
+
+						<button class="oe_stat_button"
+							name="action_view_account_move"
+							type="object"
+							groups="account.group_account_user"
+							icon="fa-pencil-square-o"
+							attrs="{'invisible': [('account_move_count', '=', 0)]}">
+							<field string="Account move" name="account_move_count" widget="statinfo"/>
+                		</button>
+
+						<button class="oe_stat_button"
+							name="action_view_payments"
+							type="object"
+							groups="account.group_account_user"
+							icon="fa-list"
+							attrs="{'invisible': [('payment_count', '=', 0)]}">
+							<field string="Payments" name="payment_count" widget="statinfo"/>
+                		</button>
+
+						<button type="object"
+							name="action_view_picking"
+							class="oe_stat_button"
+							icon="fa-truck" attrs="{'invisible':[('incoming_picking_count','=', 0)]}" groups="stock.group_stock_user">
+							<field name="incoming_picking_count" widget="statinfo" string="Receipt" help="Incoming Shipments"/>
+						</button>
+
+					</div>
+					<div class="oe_title">
+						<h1><field name="name" readonly="1"/></h1>
+					</div>
+					<field name="state" invisible="1"/>
+					<group name="group_top">
+						<group name="group_left">
+							<field name="purchase_ids" widget="many2many_tags" attrs="{'readonly': [('state', 'in', ['nav', 'port', 'received', 'cancel', 'closed_folio'])]}" domain="[('person_type_code', 'in', ['PJND','PNNR']), ('import_id', '=', False)]" options="{'no_create': 1, 'no_open': 1}" force_save= "1"/>
+							<field name="delivery_note_ids" widget="many2many_tags" options="{'no_create': 1, 'no_open': 1}"/>
+							<field name="customs_agent_id" attrs="{'readonly': [('state', 'in', ['cancel', 'closed_folio'])], 'required': [('state', 'in', ['nav', 'port', 'received', 'closed_folio'])]}" options="{'no_create': 1, 'no_open': 1}"/>
+							<field name="route_id" attrs="{'readonly': [('state', 'in', ['cancel', 'closed_folio'])]}" options="{'no_create': 1, 'no_open': 1}" force_save= "1"/>
+							<field name="shipping_company_id" options="{'no_create': 1, 'no_open': 1}" force_save= "1"/>
+							<field name="storage_id" attrs="{'readonly': [('state', 'in', ['cancel', 'closed_folio'])], 'required': [('state', 'in', ['nav', 'port', 'received', 'closed_folio'])]}" options="{'no_create': 1, 'no_open': 1}" force_save= "1"/>
+							<field name="free_days" force_save= "1"/>
+							<field name="real_transit" force_save= "1"/>
+							<field name="number_container"/>
+						</group>
+						<group name="group_right">
+							<field name="create_date" readonly="1"/>
+							<field name="origin_port_id" options="{'no_create': 1, 'no_open': 1}" force_save= "1"/>
+							<field name="intermediate_1" options="{'no_create': 1, 'no_open': 1}" force_save= "1"/>
+							<field name="intermediate_2" options="{'no_create': 1, 'no_open': 1}" force_save= "1"/>
+							<field name="intermediate_3" options="{'no_create': 1, 'no_open': 1}" force_save= "1"/>
+							<field name="destination_id" options="{'no_create': 1, 'no_open': 1}" force_save= "1"/>
+							<field name="shipment_date" attrs="{'readonly': [('state', 'in', ['cancel', 'closed_folio'])]}" force_save= "1"/>
+							<field name="dispatch_date" attrs="{'readonly': [('state', 'in', ['cancel', 'closed_folio'])]}" force_save= "1"/>
+							<field name="date_arrival_port" attrs="{'readonly': [('state', 'in', ['cancel', 'closed_folio'])]}" force_save= "1"/>
+							<field name="empty_return_date" attrs="{'readonly': [('state', 'in', ['cancel', 'closed_folio'])]}" force_save= "1"/>
+							<field name="incoterm_id" attrs="{'readonly': [('state', 'in', ['cancel', 'closed_folio'])]}" options="{'no_create': 1, 'no_open': 1}"/>
+							<field name="label_ids" widget="many2many_tags" attrs="{'readonly': [('state', 'in', ['cancel', 'closed_folio'])]}" options="{'color_field': 'color', 'no_create_edit': True}"/>
+							<field name="company_id" attrs="{'readonly': [('state', 'in', ['cancel', 'closed_folio'])]}" options="{'no_create': 1, 'no_open': 1}" groups="base.group_no_one" readonly="1"/>
+						</group>
+					</group>
+					<notebook>
+						<page name="binnacle" string="Binnacle">
+                            <field name="binnacle_ids" attrs="{'readonly': [('state', '=', 'closed_folio')]}">
+                                <tree editable="top" nolabel="1">
+                                    <field name="import_id" invisible="1"/>
+                            		<field name="state" invisible="1"/>
+                                    <field name="date"/>
+                                    <field name="novelty_type_id"/>
+                                    <field name="description"/>
+                                    <field name="user_id"/>
+                                </tree>
+                            </field>
+                        </page>
+						<page name="containers" string="Containers">
+                            <field name="container_ids" attrs="{'readonly': [('state', '=', 'closed_folio')]}">
+                                <tree editable="top" nolabel="1">
+                                    <field name="import_id" invisible="1"/>
+		                            <field name="state" invisible="1"/>
+                                    <field name="nro_container"/>
+                                    <field name="container_type_id" options="{'no_create': 1, 'no_open': 1}"/>
+                                </tree>
+                            </field>
+                        </page>
+						<page name="customs_agent" string="Customs Agent">
+                            <field name="state" invisible="1"/>
+							<group name='top'>
+								<group name='left'>
+									<field name="file_number" attrs="{'readonly': [('state', '=', 'closed_folio')]}"/>
+									<field name="file_date" attrs="{'readonly': [('state', '=', 'closed_folio')]}"/>
+									<field name="import_form" attrs="{'readonly': [('state', '=', 'closed_folio')]}"/>
+								</group>
+								<group name='rigth'>
+									<field name="form_nr_86" attrs="{'readonly': [('state', '=', 'closed_folio')]}"/>
+									<field name="form_dav" attrs="{'readonly': [('state', '=', 'closed_folio')]}"/>
+									<field name="bill_landing" attrs="{'readonly': [('state', '=', 'closed_folio')]}"/>
+								</group>
+							</group>
+                        </page>
+						<page name="documents" string="Documents">
+                			<div style="width: 100%">
+								<group name="documents" string="Documents">
+
+									<label for="document_1"/>
+									<div class="o_row" name="document_1">
+										<field name="document_1" filename="name_document_1"/>
+										<field name="name_document_1" invisible="1"/>
+										<label for="description_1"/>
+										<field name="description_1"/>
+									</div>
+
+									<label for="document_2"/>
+									<div class="o_row" name="document_2">
+										<field name="document_2" filename="name_document_2"/>
+										<field name="name_document_2" invisible="1"/>
+										<label for="description_2"/>
+										<field name="description_2"/>
+									</div>
+
+									<label for="document_3"/>
+									<div class="o_row" name="document_3">
+										<field name="document_3" filename="name_document_3"/>
+										<field name="name_document_3" invisible="1"/>
+										<label for="description_3"/>
+										<field name="description_3"/>
+									</div>
+
+									<label for="document_4"/>
+									<div class="o_row" name="document_4">
+										<field name="document_4" filename="name_document_4"/>
+										<field name="name_document_4" invisible="1"/>
+										<label for="description_4"/>
+										<field name="description_4"/>
+									</div>
+
+									<label for="document_5"/>
+									<div class="o_row" name="document_5">
+										<field name="document_5" filename="name_document_5"/>
+										<field name="name_document_5" invisible="1"/>
+										<label for="description_5"/>
+										<field name="description_5"/>
+									</div>
+
+									<label for="document_6"/>
+									<div class="o_row" name="document_6">
+										<field name="document_6" filename="name_document_6"/>
+										<field name="name_document_6" invisible="1"/>
+										<label for="description_6"/>
+										<field name="description_6"/>
+									</div>
+
+									<label for="document_7"/>
+									<div class="o_row" name="document_7">
+										<field name="document_7" filename="name_document_7"/>
+										<field name="name_document_7" invisible="1"/>
+										<label for="description_7"/>
+										<field name="description_7"/>
+									</div>
+
+									<label for="document_8"/>
+									<div class="o_row" name="document_8">
+										<field name="document_8" filename="name_document_8"/>
+										<field name="name_document_8" invisible="1"/>
+										<label for="description_8"/>
+										<field name="description_8"/>
+									</div>
+
+									<label for="document_9"/>
+									<div class="o_row" name="document_9">
+										<field name="document_9" filename="name_document_9"/>
+										<field name="name_document_9" invisible="1"/>
+										<label for="description_9"/>
+										<field name="description_9"/>
+									</div>
+
+									<label for="document_10"/>
+									<div class="o_row" name="document_10">
+										<field name="document_10" filename="name_document_10"/>
+										<field name="name_document_10" invisible="1"/>
+										<label for="description_10"/>
+										<field name="description_10"/>
+									</div>
+								</group>
+							</div>
+                        </page>
+					</notebook>
+				</sheet>
+				<div class="oe_chatter">
+					<field name="message_follower_ids"/>
+					<field name="message_ids"/>
+				</div>
+			</form>
+		</field>
+	</record>
+
+	<!-- kanban -->
+	<record id='ft_import_kanban' model='ir.ui.view'>
+		<field name="name">ft.import.kanban</field>
+		<field name="model">ft.import</field>
+		<field name="arch" type="xml">
+			<kanban default_group_by="state" class="o_kanban_small_column" sample="1">
+				<field name="id"/>
+				<field name="state"/>
+				<field name="name"/>
+				<field name="customs_agent_id"/>
+				<field name="create_date"/>
+				<templates>
+				<t t-name="kanban-box">
+					<div class="oe_kanban_vignette oe_semantic_html_override oe_kanban_global_click">
+						<div class="o_dropdown_kanban dropdown">
+							<a class="dropdown-toggle o-no-caret btn" role="button" data-toggle="dropdown" href="#" aria-label="Dropdown menu" title="Dropdown menu">
+								<span class="fa fa-ellipsis-v"/>
+							</a>
+							<div class="dropdown-menu" role="menu">
+								<a role="menuitem" type="open" class="dropdown-item">Edit</a>
+							</div>
+						</div>
+						<div class="oe_kanban_details">
+							<strong class="oe_partner_heading">
+								<a type="open" class="o_kanban_record_title">
+									<field name="name"/>
+								</a>
+							</strong>
+							<br/>
+						</div>
+						<div class="o_kanban_record_body">
+							<a >
+								<field name="create_date"/>
+							</a>
+						</div>
+						<div class="o_kanban_record_bottom" t-if="!selection_mode">
+							<div class="oe_kanban_bottom_left">
+							</div>
+							<div class="oe_kanban_bottom_right" t-if="!selection_mode">
+								<t><field name="customs_agent_id" widget="many2one_avatar"/></t>
+							</div>
+						</div>
+					</div>
+				</t>
+				</templates>
+			</kanban>
+		</field>
+	</record>
+
+	<!-- Search -->
+	<record id="ft_import_search" model="ir.ui.view">
+        <field name="name">ft.import.search</field>
+        <field name="model">ft.import</field>
+        <field name="arch" type="xml">
+            <search>
+                <filter name="archived" string="Archived" domain="[('active', '=', False)]" />
+            </search>
+        </field>
+    </record>
+
+    <!-- actions -->
+	<record id="ft_import_action" model="ir.actions.act_window">
+		<field name="name">Imports</field>
+		<field name="res_model">ft.import</field>
+		<field name="view_mode">tree,form,kanban,graph,pivot</field>
+	</record>
+
+	<menuitem id="ft_import_general_info"
+      name="General Information" 
+      action="ft_import_action" 
+      parent="omegasoft_foreing_trade_import.omegasoft_foreing_trade_import_menu_root"
+      sequence="0"
+      groups=""/>
+</odoo>

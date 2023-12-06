@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="ft_novelty_type_form" model="ir.ui.view">
+        <field name="name">ft.novelty.type.view.form</field>
+        <field name="model">ft.novelty.type</field>
+        <field name="arch" type="xml">
+            <form string="Types novelty">
+                <sheet>
+                    <field name="active" invisible="1" />
+                    <group name='top'>
+                        <group name="left">
+                            <field name="name" />
+                            <field name="code" required="1"/>
+                        </group>
+                        <group name="right">
+                            <field name="description" />
+                            <field name="company_id" options="{'no_create': True}" groups="base.group_no_one"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+					<field name="message_follower_ids"/>
+					<field name="message_ids"/>
+				</div>
+            </form>
+        </field>
+    </record>
+
+    <record id="ft_novelty_type_tree" model="ir.ui.view">
+        <field name="name">ft.novelty.type.view.tree</field>
+        <field name="model">ft.novelty.type</field>
+        <field name="arch" type="xml">
+            <tree string="Types novelty">
+                <field name="name" />
+                <field name="code" />
+                <field name="description" />
+                <field name="company_id" groups="base.group_no_one"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="ft_novelty_type_search" model="ir.ui.view">
+        <field name="name">ft.novelty.type.search</field>
+        <field name="model">ft.novelty.type</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" />
+                <separator />
+                <filter name="archived" string="Archived" domain="[('active', '=', False)]" />
+            </search>
+        </field>
+    </record>
+
+    <record id="ft_novelty_type_action" model="ir.actions.act_window">
+        <field name="name">Types novelty</field>
+        <field name="res_model">ft.novelty.type</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- actions -->
+    <menuitem id="ft_novelty_type_config" name="Types novelty" action="ft_novelty_type_action" parent="omegasoft_foreing_trade_import.omegasoft_foreing_trade_import_menu_configuration" 
+        groups="omegasoft_foreing_trade_import.group_ft_novelty" sequence="19" />
+</odoo>

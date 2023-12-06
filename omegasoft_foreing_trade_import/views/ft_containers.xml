@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="ft_containers_form" model="ir.ui.view">
+        <field name="name">ft.containers.view.form</field>
+        <field name="model">ft.containers</field>
+        <field name="arch" type="xml">
+            <form string="Containers">
+                <sheet>
+                    <field name="active" invisible="1" />
+                    <group name="top">
+                        <group name="left">
+                            <field name="name" required="1"/>
+                            <field name="code"/>
+                        </group>
+                        <group name="right">
+                            <field name="active_container" widget="boolean_toggle"/>
+                        </group>
+                    </group>
+                    <group name="bottom" >
+                        <group name="left" string="Dimensions">
+                            <label for="inside_length"/>
+                            <div name="inside_length_div" class="o_row">
+                                <field name="inside_length" />
+                                <field name="inside_length_uom_id" options="{'no_create': True, 'no_open': True}" readonly="True"/>
+                            </div>
+                            <label for="inside_width"/>
+                            <div name="inside_width_div" class="o_row">
+                                <field name="inside_width" />
+                                <field name="inside_width_uom_id" options="{'no_create': True, 'no_open': True}" readonly="True"/>
+                            </div>
+                            <label for="inside_height"/>
+                            <div name="inside_height_div" class="o_row">
+                                <field name="inside_height" />
+                                <field name="inside_height_uom_id" options="{'no_create': True, 'no_open': True}" readonly="True"/>
+                            </div>
+                            <label for="door_width"/>
+                            <div name="door_width_div" class="o_row">
+                                <field name="door_width" />
+                                <field name="door_width_uom_id" options="{'no_create': True, 'no_open': True}" readonly="True"/>
+                            </div>
+                            <label for="door_height"/>
+                            <div name="door_height_div" class="o_row">
+                                <field name="door_height" />
+                                <field name="door_height_uom_id" options="{'no_create': True, 'no_open': True}" readonly="True"/>
+                            </div>
+                        </group>
+                        <group name="right" string="capacity">
+                            <label for="cubic_capacity"/>
+                            <div name="cubic_capacity_div" class="o_row">
+                                <field name="cubic_capacity" />
+                                <field name="cubic_capacity_uom_id" options="{'no_create': True, 'no_open': True}" readonly="True"/>
+                            </div>
+                            <label for="tare"/>
+                            <div name="tare_div" class="o_row">
+                                <field name="tare" />
+                                <field name="tare_uom_id" options="{'no_create': True, 'no_open': True}" readonly="True"/>
+                            </div>
+                            <label for="maximum_load"/>
+                            <div name="maximum_load_div" class="o_row">
+                                <field name="maximum_load" />
+                                <field name="maximum_load_uom_id" options="{'no_create': True, 'no_open': True}" readonly="True"/>
+                            </div>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+					<field name="message_follower_ids"/>
+					<field name="message_ids"/>
+				</div>
+            </form>
+        </field>
+    </record>
+
+    <record id="ft_containers_tree" model="ir.ui.view">
+        <field name="name">ft.containers.view.tree</field>
+        <field name="model">ft.containers</field>
+        <field name="arch" type="xml">
+            <tree string="Containers">
+                <field name="code" />
+                <field name="name" />
+                <field name="active_container" widget="boolean_toggle"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="ft_containers_search" model="ir.ui.view">
+        <field name="name">ft.containers.search</field>
+        <field name="model">ft.containers</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" />
+                <separator />
+                <filter name="archived" string="Archived" domain="[('active', '=', False)]" />
+            </search>
+        </field>
+    </record>
+
+    <record id="ft_containers_action" model="ir.actions.act_window">
+        <field name="name">Containers</field>
+        <field name="res_model">ft.containers</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- actions -->
+    <menuitem id="ft_containers_config" name="Containers" action="ft_containers_action" parent="omegasoft_foreing_trade_import.omegasoft_foreing_trade_import_menu_configuration" sequence="14" />
+</odoo>

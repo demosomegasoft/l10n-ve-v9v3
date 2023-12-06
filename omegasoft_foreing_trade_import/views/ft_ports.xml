@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="ft_ports_view_form" model="ir.ui.view">
+        <field name="name">ft.ports.view.form</field>
+        <field name="model">ft.ports</field>
+        <field name="arch" type="xml">
+            <form string="Ports">
+                <sheet>
+                    <field name="active" invisible="1" />
+                    <group name='top'>
+                        <group name="left">
+                            <field name="name" required="1"/>
+                            <field name="code" required="1"/>
+                        </group>
+                        <group name="right">
+                            <field name="country" required="1"/>
+                            <field name="company_id" options="{'no_create': True}" groups="base.group_no_one" readonly="1"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+					<field name="message_follower_ids"/>
+					<field name="message_ids"/>
+				</div>
+            </form>
+        </field>
+    </record>
+
+    <record id="ft_ports_view_tree" model="ir.ui.view">
+        <field name="name">ft.ports.view.tree</field>
+        <field name="model">ft.ports</field>
+        <field name="arch" type="xml">
+            <tree string="Ports" editable="top" sample="1">
+                <field name="code" />
+                <field name="name" />
+                <field name="country" />
+                <field name="company_id" options="{'no_create': True}" groups="base.group_no_one" readonly="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="fr_ports_search" model="ir.ui.view">
+        <field name="name">ft.ports.search</field>
+        <field name="model">ft.ports</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" />
+                <field name="country" />
+                <separator />
+                <filter name="archived" string="Archived" domain="[('active', '=', False)]" />
+                <group name="group_by" expand="1" string="Group by">
+                    <filter name="country" string="Country" context="{'group_by': 'country'}" />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="ft_ports_action" model="ir.actions.act_window">
+        <field name="name">Ports</field>
+        <field name="res_model">ft.ports</field>
+        <field name="view_mode">tree</field>
+    </record>
+
+    <!-- actions -->
+    <menuitem id="ft_ports_config" name="Ports" action="ft_ports_action" parent="omegasoft_foreing_trade_import.omegasoft_foreing_trade_import_menu_configuration" sequence="11" />
+</odoo>

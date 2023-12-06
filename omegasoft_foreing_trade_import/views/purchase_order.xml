@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="ft_import_purchase_order_form_inherit" model="ir.ui.view">
+		<field name="name">ft.import.purchase.order.form.inherit</field>
+		<field name="model">purchase.order</field>
+		<field name="inherit_id" ref="purchase.purchase_order_form"/>
+		<field name="arch" type="xml">
+
+			<xpath expr="//field[@name='partner_ref']" position="after">
+				<field name="state_impor_id" invisible="1"/>
+				<field name="person_type_code" invisible="1"/>
+				<field name="import_id" force_save="1" options="{'no_create': 1, 'no_open': 1}" attrs="{'invisible': [('person_type_code', '!=', 'PJND')], 'readonly': ['|', ('state_impor_id', '=', 'closed_folio'), ('state', '=', 'purchase')]}"/>
+			</xpath>
+
+			<xpath expr="//field[@name='order_line']/tree/field[@name='product_qty']" position="after">
+				<field name="certificate_danger_alert" invisible="1"/>
+				<field name="certificate_warning_alert" invisible="1"/>
+				<field name="certificate_success_alert" invisible="1"/>
+				<field name="certificate_muted_alert" invisible="1"/>
+				<button readonly="1" name="button_pass" type="object" icon="fa-certificate text-danger" attrs="{'invisible': [('certificate_danger_alert', '=', False)]}"/>
+				<button readonly="1" name="button_pass" type="object" icon="fa-certificate text-warning" attrs="{'invisible': [('certificate_warning_alert', '=', False)]}"/>
+				<button readonly="1" name="button_pass" type="object" icon="fa-certificate text-muted" attrs="{'invisible': [('certificate_muted_alert', '=', False)]}"/>
+				<button readonly="1" name="button_pass" type="object" icon="fa-certificate text-success" attrs="{'invisible': [('certificate_success_alert', '=', False)]}"/>
+
+				<field name="person_type_code" invisible="1"/>
+				<field name="container_qty" attrs="{'column_invisible': ['|', ('parent.person_type_code', 'not in', ('PJND', 'PJND')), ('parent.exporter_agent', '=', False)]}"/>
+			</xpath>
+
+			<xpath expr="//field[@name='dest_address_id']" position="after">
+				<field name="capacities_container" invisible="1"/>
+				<field name="exporter_agent" invisible="1"/>
+				<field name="measurement" attrs="{'invisible': ['|', ('capacities_container', '=', False), ('exporter_agent', '=', False)], 'readonly':[('state', 'in', 'purchase')]}" force_save ="1"/>
+				<field name="container_id" options="{'no_create': 1, 'no_open': 1}" attrs="{'invisible':['|','|', ('capacities_container', '=', False), ('exporter_agent', '=', False), ('measurement', '=', False)], 'readonly': [('state', 'in', 'purchase')]}"/>
+				<field name="recommended_containers" attrs="{'invisible': ['|', ('capacities_container', '=', False), ('exporter_agent', '=', False)]}"/>
+			</xpath>
+
+			<xpath expr="//header" position="after">
+				<div class="alert alert-warning text-center o_form_header" role="status" attrs="{'invisible': [('products_with_issues', '=', [])]}">
+                    <div>
+                        <strong>
+                            The product: &#32;
+                            <field name="products_with_issues" widget="many2many_tags" options="{'no_open': 0, 'no_update': 0}" readonly="1"/>&#32;
+                            does not have the necessary data configured to make a &#32;
+                            <field name="measurement" readonly="1"/>&#32;
+                        </strong>
+                    </div>
+                </div>
+			</xpath>
+		</field>
+	</record>
+</odoo>

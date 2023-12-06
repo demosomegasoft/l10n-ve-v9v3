@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data noupdate="1">
+
+        <record id="ft_import_rule" model="ir.rule" >
+            <field name="name">ft.import.rule</field>
+            <field name="model_id" ref="model_ft_import"/>
+            <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+        </record>
+
+        <record id="ft_shipping_companies_rule" model="ir.rule" >
+            <field name="name">ft.shipping.companies.rule</field>
+            <field name="model_id" ref="model_ft_shipping_companies"/>
+            <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+        </record>
+
+        <record id="ft_ports_rule" model="ir.rule" >
+            <field name="name">ft.ports.rule</field>
+            <field name="model_id" ref="model_ft_ports"/>
+            <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+        </record>
+
+        <record id="ft_duty_rule" model="ir.rule" >
+            <field name="name">ft.duty.rule</field>
+            <field name="model_id" ref="model_ft_duty"/>
+            <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+        </record>
+
+        <record id="ft_agreement_rule" model="ir.rule" >
+            <field name="name">ft.agreement.rule</field>
+            <field name="model_id" ref="model_ft_agreement"/>
+            <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+        </record>
+
+        <record id="ft_certificate_type_rule" model="ir.rule" >
+            <field name="name">ft.certificate.type.rule</field>
+            <field name="model_id" ref="model_ft_certificate_type"/>
+            <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+        </record>
+
+        <record id="ft_certificate_rule" model="ir.rule" >
+            <field name="name">ft.certificate.rule</field>
+            <field name="model_id" ref="model_ft_certificate"/>
+            <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+        </record>
+
+        <record id="ft_novelty_type_rule" model="ir.rule" >
+            <field name="name">ft.novelty.type.rule</field>
+            <field name="model_id" ref="model_ft_novelty_type"/>
+            <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+        </record>
+
+        <record id="ft_containers_rule" model="ir.rule" >
+            <field name="name">ft.containers.rule</field>
+            <field name="model_id" ref="model_ft_containers"/>
+            <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+        </record>
+
+        <record id="ft_storage_rule" model="ir.rule" >
+            <field name="name">ft.storage.rule</field>
+            <field name="model_id" ref="model_ft_storage"/>
+            <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+        </record>
+
+        <record id="ft_vigilance_fee_rule" model="ir.rule" >
+            <field name="name">ft.vigilance.fee.rule</field>
+            <field name="model_id" ref="model_ft_vigilance_fee"/>
+            <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+        </record>
+
+        <record id="ft_import_routes_rule" model="ir.rule" >
+            <field name="name">ft.import.routes.rule</field>
+            <field name="model_id" ref="model_ft_import_routes"/>
+            <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+        </record>
+
+	</data>
+</odoo>

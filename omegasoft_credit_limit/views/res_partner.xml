@@ -1,0 +1,43 @@
+<odoo>
+    <data>
+        <record id="view_partner_form_inherit" model="ir.ui.view">
+            <field name="name">view.partner.form.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//notebook" position="inside">
+                    <page name="credit_limit" string="Credit limit"
+                        groups='omegasoft_credit_limit.group_sale_order_approver'>
+                        <field name="currency_domain_ids" invisible="True" />
+                        <group name="credit_active">
+                            <group name="left" string="">
+                                <field name="active_credit" />
+                                <field name="credit_currency_id"
+                                    options="{'no_create': 1, 'no_open': 1, 'no_edit': 1}"
+                                    attrs="{'invisible': [('active_credit', '=', False)]}"
+                                    domain="[('id', 'in', currency_domain_ids)]" />
+                            </group>
+                            <group name="right" string="">
+                            </group>
+                        </group>
+                        <group name="credit_active"
+                            attrs="{'invisible': [('credit_currency_id', '=', False)]}">
+                            <group name="left" string="">
+                                <field name="amount_limit" widget="monetary"
+                                    options="{'currency_field': 'credit_currency_id'}" />
+                                <field name="credit_available" widget="monetary"
+                                    options="{'currency_field': 'credit_currency_id'}" />
+                            </group>
+                            <group name="right" string="">
+                                <field name="credit_total_due" />
+                                <field name="credit_total_overdue" />
+                                <field name="sale_invoiceless_amount" />
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+
+            </field>
+        </record>
+    </data>
+</odoo>

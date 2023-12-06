@@ -1,0 +1,135 @@
+<odoo>
+  <data>
+
+ 	<!-- Solicitud de presupuesto -->
+	<record id="omegasoft_foreing_trade_import_purchase_rfq_action" model="ir.actions.act_window">
+		<field name="name">Requests for Quotation</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">purchase.order</field>
+		<field name="view_mode">tree,kanban,form,pivot,graph,calendar,activity</field>
+		<field name="view_id" ref="purchase.purchase_order_kpis_tree"/>
+		<field name="domain">[('person_type_code', 'in', ('PJND', 'PNNR'))]</field>
+		<field name="search_view_id" ref="purchase.view_purchase_order_filter"/>
+		<field name="context">{'quotation_only': True}</field>
+	</record>
+
+ 	<!-- Pedidos de compras -->
+  <record id="omegasoft_foreing_trade_import_purchase_action" model="ir.actions.act_window">
+    <field name="name">Purchase Orders</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">purchase.order</field>
+    <field name="view_mode">tree,kanban,form,pivot,graph,calendar,activity</field>
+		<field name="view_id" ref="purchase.purchase_order_view_tree"/>
+    <field name="domain">[('state','in',('purchase', 'done')), ('person_type_code', 'in', ('PJND', 'PNNR'))]</field>
+    <field name="search_view_id" ref="purchase.purchase_order_view_search"/>
+    <field name="context">{}</field>
+  </record>
+
+  <!-- Produc -->
+  <record id="omegasoft_foreing_trade_import_product_template_action" model="ir.actions.act_window">
+    <field name="name">Products</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">product.template</field>
+    <field name="view_mode">kanban,tree,form</field>
+    <field name="search_view_id" ref="stock.product_template_search_form_view_stock"/>
+    <field name="domain">[('detailed_type','in', ['product','consu']), ('is_product_imported','=', 'True')]</field>
+    <field name="context">{"search_default_consumable": 1, 'default_detailed_type': 'product'}</field>
+  </record>
+
+  <!-- Service -->
+  <record id="omegasoft_foreing_trade_import_product_template_service_action" model="ir.actions.act_window">
+    <field name="name">Service</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">product.template</field>
+    <field name="view_mode">kanban,tree,form</field>
+    <field name="search_view_id" ref="stock.product_template_search_form_view_stock"/>
+    <field name="domain">[('detailed_type','=', 'service'), ('landed_cost_ok','=', 'True')]</field>
+    <field name="context">{"search_default_services": 1, 'default_detailed_type': 'service'}</field>
+  </record>
+  
+    <menuitem id="omegasoft_foreing_trade_import_menu_root"
+      name="Imports" 
+      web_icon="omegasoft_foreing_trade_import,static/src/img/odoo_icon_import.png"
+      sequence="185"
+      groups="omegasoft_foreing_trade_import.group_user_foreing_trade_import"/>
+      
+    <menuitem id="omegasoft_foreing_trade_import_purchase"
+      name="Purchase"
+      parent="omegasoft_foreing_trade_import_menu_root"
+      sequence="1"
+      groups=""/>
+
+      <menuitem id="omegasoft_foreing_trade_import_purchase_quotation"
+      name="Request For Quotation"
+      action="omegasoft_foreing_trade_import_purchase_rfq_action"
+      parent="omegasoft_foreing_trade_import_purchase"
+      sequence="10"
+      groups=""/>
+
+      <menuitem id="omegasoft_foreing_trade_import_purchase_orders"
+      name="Purchase Orders"
+      action="omegasoft_foreing_trade_import_purchase_action"
+      parent="omegasoft_foreing_trade_import_purchase"
+      sequence="11"
+      groups=""/>
+
+    <menuitem id="omegasoft_foreing_trade_import_operations"
+      name="Operations"
+      parent="omegasoft_foreing_trade_import_menu_root"
+      sequence="2"
+      groups=""/>
+
+      <menuitem id="omegasoft_foreing_trade_import_cost_destination"
+      name="Cost at destination"
+      action="stock_landed_costs.action_stock_landed_cost"
+      parent="omegasoft_foreing_trade_import_operations"
+      sequence="10"
+      groups=""/>
+
+    <menuitem id="omegasoft_foreing_trade_import_suppliers"
+      name="Suppliers"
+      parent="omegasoft_foreing_trade_import_menu_root"
+      sequence="3"
+      groups=""/>
+
+      <menuitem id="omegasoft_foreing_trade_import_suppliers_suppliers"
+      name="Suppliers"
+      action="account.res_partner_action_supplier"
+      parent="omegasoft_foreing_trade_import_suppliers"
+      sequence="10"
+      groups=""/>
+
+      <menuitem id="omegasoft_foreing_trade_import_invoices"
+      name="Invoices"
+      action="account.action_move_in_invoice_type"
+      parent="omegasoft_foreing_trade_import_suppliers"
+      sequence="11"
+      groups=""/>
+
+    <menuitem id="omegasoft_foreing_trade_import_product"
+      name="Product"
+      parent="omegasoft_foreing_trade_import_menu_root"
+      sequence="4"
+      groups=""/>
+
+      <menuitem id="omegasoft_foreing_trade_import_product_product"
+      name="Product"
+      action="omegasoft_foreing_trade_import_product_template_action"
+      parent="omegasoft_foreing_trade_import_product"
+      sequence="10"
+      groups=""/>
+
+      <menuitem id="omegasoft_foreing_trade_import_product_service"
+      name="Service"
+      action="omegasoft_foreing_trade_import_product_template_service_action"
+      parent="omegasoft_foreing_trade_import_product"
+      sequence="11"
+      groups=""/>
+
+    <menuitem id="omegasoft_foreing_trade_import_menu_configuration"
+      name="Configuration" 
+      parent="omegasoft_foreing_trade_import_menu_root"
+      sequence="20"
+      groups="omegasoft_foreing_trade_import.foreing_trade_import_group"/>
+  </data>
+</odoo>

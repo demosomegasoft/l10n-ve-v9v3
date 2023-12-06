@@ -1,0 +1,252 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* omegasoft_dispatch_control
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-08-01 19:32+0000\n"
+"PO-Revision-Date: 2023-08-01 19:32+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: omegasoft_dispatch_control
+#: model_terms:ir.ui.view,arch_db:omegasoft_dispatch_control.dispatch_control_view_form
+msgid ""
+"<span class=\"o_form_label o_td_label\" name=\"address_name\">\n"
+"                                <b>Address</b>\n"
+"                            </span>"
+msgstr ""
+
+#. module: omegasoft_dispatch_control
+#: model_terms:ir.ui.view,arch_db:omegasoft_dispatch_control.dispatch_control_view_form
+msgid "Are you sure to perform this operation?"
+msgstr "¿Esta seguro de realizar esta operación?"
+
+#. module: omegasoft_dispatch_control
+#: model:ir.model.fields,field_description:omegasoft_dispatch_control.field_dispatch_control__city
+msgid "City"
+msgstr "Ciudad"
+
+#. module: omegasoft_dispatch_control
+#: model:ir.model.fields,field_description:omegasoft_dispatch_control.field_dispatch_control__company_id
+#: model:ir.model.fields,help:omegasoft_dispatch_control.field_dispatch_control__company_id
+msgid "Company"
+msgstr "Compañía"
+
+#. module: omegasoft_dispatch_control
+#: model:ir.model.fields,field_description:omegasoft_dispatch_control.field_dispatch_control__country_id
+msgid "Country"
+msgstr "País"
+
+#. module: omegasoft_dispatch_control
+#: model:ir.model.fields,field_description:omegasoft_dispatch_control.field_dispatch_control__create_uid
+#: model:ir.model.fields,field_description:omegasoft_dispatch_control.field_dispatch_product_line__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: omegasoft_dispatch_control
+#: model:ir.model.fields,field_description:omegasoft_dispatch_control.field_dispatch_control__create_date
+#: model:ir.model.fields,field_description:omegasoft_dispatch_control.field_dispatch_product_line__create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: omegasoft_dispatch_control
+#: model:ir.model.fields,field_description:omegasoft_dispatch_control.field_dispatch_control__partner_id
+msgid "Customer"
+msgstr "Cliente"
+
+#. module: omegasoft_dispatch_control
+#: model:ir.model.fields.selection,name:omegasoft_dispatch_control.selection__dispatch_control__state__customer_withdraws
+#: model_terms:ir.ui.view,arch_db:omegasoft_dispatch_control.dispatch_control_view_form
+msgid "Customer withdraws"
+msgstr "Cliente retira"
+
+#. module: omegasoft_dispatch_control
+#: model:ir.model.fields,field_description:omegasoft_dispatch_control.field_dispatch_control__date_delivery
+msgid "Date of delivery"
+msgstr "Fecha de entrega"
+
+#. module: omegasoft_dispatch_control
+#: model:ir.model.fields,field_description:omegasoft_dispatch_control.field_dispatch_control__date_issue
+msgid "Date of issue"
+msgstr "Fecha de emisión"
+
+#. module: omegasoft_dispatch_control
+#: model_terms:ir.ui.view,arch_db:omegasoft_dispatch_control.dispatch_control_view_form
+#: model_terms:ir.ui.view,arch_db:omegasoft_dispatch_control.dispatch_control_view_tree
+msgid "Delivery notes"
+msgstr "Albaranes"
+
+#. module: omegasoft_dispatch_control
+#: model:ir.model.fields,field_description:omegasoft_dispatch_control.field_dispatch_control__description
+#: model:ir.model.fields,field_description:omegasoft_dispatch_control.field_dispatch_product_line__product_id
+msgid "Description"
+msgstr "Descripción"
+
+#. module: omegasoft_dispatch_control
+#: model:ir.model,name:omegasoft_dispatch_control.model_dispatch_control
+#: model:ir.model.fields,field_description:omegasoft_dispatch_control.field_account_bank_statement_line__dispatch_control_id
+#: model:ir.model.fields,field_description:omegasoft_dispatch_control.field_account_move__dispatch_control_id
+#: model:ir.model.fields,field_description:omegasoft_dispatch_control.field_account_payment__dispatch_control_id
+#: model:ir.model.fields,field_description:omegasoft_dispatch_control.field_dispatch_product_line__dispatch_control_id
+#: model:ir.ui.menu,name:omegasoft_dispatch_control.dispatch_control_menu
+msgid "Dispatch Control"
+msgstr "Control de despacho"
+
+#. module: omegasoft_dispatch_control
+#: model:ir.actions.act_window,name:omegasoft_dispatch_control.shipping_companies_action
+msgid "Dispatch controls"
+msgstr "Controles de despacho"
+
+#. module: omegasoft_dispatch_control
+#: model:ir.model.fields,field_description:omegasoft_dispatch_control.field_dispatch_control__display_name
+#: model:ir.model.fields,field_description:omegasoft_dispatch_control.field_dispatch_product_line__display_name
+msgid "Display Name"
+msgstr "Nombre"
+
+#. module: omegasoft_dispatch_control
+#: model:ir.model.fields.selection,name:omegasoft_dispatch_control.selection__dispatch_control__state__in_process
+msgid "In process"
+msgstr "En proceso"
+
+#. module: omegasoft_dispatch_control
+#: model:ir.model.fields,field_description:omegasoft_dispatch_control.field_dispatch_product_line__code
+msgid "Internal Reference"
+msgstr "Codigo"
+
+#. module: omegasoft_dispatch_control
+#: model:ir.model.fields,field_description:omegasoft_dispatch_control.field_dispatch_control__invoice_id
+#: model_terms:ir.ui.view,arch_db:omegasoft_dispatch_control.dispatch_control_view_form
+msgid "Invoice"
+msgstr "Factura"
+
+#. module: omegasoft_dispatch_control
+#: model:ir.model,name:omegasoft_dispatch_control.model_account_move
+msgid "Journal Entry"
+msgstr "Asiento contable"
+
+#. module: omegasoft_dispatch_control
+#: model:ir.model.fields,field_description:omegasoft_dispatch_control.field_dispatch_control__product_line_ids
+msgid "Lines"
+msgstr "lineas"
+
+#. module: omegasoft_dispatch_control
+#: model:ir.model.fields,field_description:omegasoft_dispatch_control.field_dispatch_control__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: omegasoft_dispatch_control
+#. odoo-python
+#: code:addons/extra-addons/Pneus/omegasoft_dispatch_control/models/dispatch_control.py:0
+#: code:addons/omegasoft_dispatch_control/models/dispatch_control.py:0
+#, python-format
+msgid "New"
+msgstr "Nuevo"
+
+#. module: omegasoft_dispatch_control
+#: model:ir.model.fields.selection,name:omegasoft_dispatch_control.selection__dispatch_control__state__pending
+msgid "Pending"
+msgstr "Pendiente"
+
+#. module: omegasoft_dispatch_control
+#: model:ir.model.fields,field_description:omegasoft_dispatch_control.field_dispatch_control__phone
+msgid "Phone"
+msgstr "Teléfono"
+
+#. module: omegasoft_dispatch_control
+#: model_terms:ir.ui.view,arch_db:omegasoft_dispatch_control.dispatch_control_view_form
+msgid "Products"
+msgstr "Productos"
+
+#. module: omegasoft_dispatch_control
+#: model:ir.model.fields,field_description:omegasoft_dispatch_control.field_dispatch_product_line__product_qty
+msgid "Quantity"
+msgstr "Cantidad"
+
+#. module: omegasoft_dispatch_control
+#: model:ir.model.fields,field_description:omegasoft_dispatch_control.field_dispatch_control__partner_vat
+msgid "RIF"
+msgstr ""
+
+#. module: omegasoft_dispatch_control
+#: model:ir.model.fields,field_description:omegasoft_dispatch_control.field_dispatch_control__sale_order_id
+msgid "Sale order"
+msgstr "Pedido de venta"
+
+#. module: omegasoft_dispatch_control
+#: model:ir.model,name:omegasoft_dispatch_control.model_sale_advance_payment_inv
+msgid "Sales Advance Payment Invoice"
+msgstr "Ventas. Anticipo pago factura"
+
+#. module: omegasoft_dispatch_control
+#: model:ir.model,name:omegasoft_dispatch_control.model_sale_order
+msgid "Sales Order"
+msgstr "Pedido de venta"
+
+#. module: omegasoft_dispatch_control
+#: model:ir.model.fields,field_description:omegasoft_dispatch_control.field_dispatch_control__user_id
+msgid "Salesperson"
+msgstr "Vendedor"
+
+#. module: omegasoft_dispatch_control
+#: model:ir.model.fields.selection,name:omegasoft_dispatch_control.selection__dispatch_control__state__sent
+msgid "Sent"
+msgstr "Enviado"
+
+#. module: omegasoft_dispatch_control
+#: model:ir.model.fields,field_description:omegasoft_dispatch_control.field_dispatch_control__state
+#: model:ir.model.fields,field_description:omegasoft_dispatch_control.field_dispatch_control__state_id
+msgid "State"
+msgstr "Estado"
+
+#. module: omegasoft_dispatch_control
+#: model:ir.model.fields,field_description:omegasoft_dispatch_control.field_dispatch_control__picking_move_lines
+msgid "Stock Moves"
+msgstr ""
+
+#. module: omegasoft_dispatch_control
+#: model:ir.model.fields,field_description:omegasoft_dispatch_control.field_dispatch_control__street
+msgid "Street"
+msgstr "Calle"
+
+#. module: omegasoft_dispatch_control
+#: model:ir.model.fields,field_description:omegasoft_dispatch_control.field_dispatch_control__street2
+msgid "Street2"
+msgstr "Calle 2"
+
+#. module: omegasoft_dispatch_control
+#: model:ir.model.fields,field_description:omegasoft_dispatch_control.field_dispatch_control__company_vat
+msgid "Tax ID"
+msgstr "RIF"
+
+#. module: omegasoft_dispatch_control
+#: model:ir.model.fields,help:omegasoft_dispatch_control.field_dispatch_control__company_vat
+#: model:ir.model.fields,help:omegasoft_dispatch_control.field_dispatch_control__partner_vat
+msgid ""
+"The Tax Identification Number. Values here will be validated based on the "
+"country format. You can use '/' to indicate that the partner is not subject "
+"to tax."
+msgstr ""
+
+#. module: omegasoft_dispatch_control
+#: model:ir.model.fields,field_description:omegasoft_dispatch_control.field_dispatch_control__picking_ids
+#: model_terms:ir.ui.view,arch_db:omegasoft_dispatch_control.dispatch_control_view_form
+msgid "Transfers"
+msgstr "Transferencias"
+
+
+#. module: omegasoft_dispatch_control
+#: model:ir.model.fields,field_description:omegasoft_dispatch_control.field_dispatch_control__driver_id
+msgid "Transportation"
+msgstr "Transporte"
+
+#. module: omegasoft_dispatch_control
+#: model:ir.model.fields,field_description:omegasoft_dispatch_control.field_dispatch_product_line__weight
+msgid "Weight"
+msgstr "Peso"

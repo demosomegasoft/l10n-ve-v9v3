@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="paperformat_pformat" model="report.paperformat">
+            <field name="name">paperformat.cash.flow.report.pformat</field>
+            <field name="default" eval="True" />
+            <field name="format">Letter</field>
+            <field name="orientation">Portrait</field>
+            <field name="default" eval="True" />
+            <field name="margin_top">10</field>
+            <field name="margin_left">23</field>
+            <field name="margin_right">23</field>
+            <field name="margin_bottom">10</field>
+            <field name="header_line" eval="False" />
+            <!-- <field name="header_spacing">38</field> -->
+            <field name="dpi">80</field>
+        </record>
+
+        <template id="cash_flow_template">
+            <t t-call="web.basic_layout">
+                    <t t-set="o" t-value="o.with_context(lang=lang)" />
+                    <t t-set="company_id" t-value="o.company_id"/>
+                    <!-- Region [A] -->
+                    <!-- Invoice Information -->
+
+                    <div class="text-center">
+                        <h2>Cash Flow Projection</h2>
+                        <strong><t t-out="o.date_from" t-options="{'widget': 'date'}"/> - <t t-esc="o.date_to" t-options="{'widget': 'date'}"/></strong>
+                        <br/>
+                        <div>
+                            <span style="width: 50%">
+                                Company: <t t-out="o.company_id.name"/>
+                            </span>
+                            <span style="width: 50%">
+                                Responsible: <t t-out="o.user_id.name"/>
+                            </span>
+                        </div>
+                    </div>
+                    <br/>
+
+                    <h4>Lines</h4>
+                    <table  class="table table-sm" style="font-size: 12px;">
+                        <thead><tr>
+                            <th>Number</th>
+                            <th>Partner</th>
+                            <th>Due Date</th>
+                            <th>Amount Due</th>
+                            <th>Journal</th>
+                            <th>Currency</th>
+                            <th>Date</th>
+                            <th>Expected Amount</th>
+                            <th>Expected Amount Ref</th>
+                        </tr></thead>
+                        <tbody>
+                        <tr t-foreach='o.line_ids' t-as='line'>
+                            <td><t t-esc="line.move_id.name" /></td>
+                            <td><t t-esc="line.partner_id.name" /></td>
+                            <td><t t-esc="line.move_id.invoice_date_due" t-options="{'widget': 'date'}"/></td>
+                            <td><t t-esc="line.amount_residual" t-options="{'widget':'monetary', 'display_currency':line.invoice_currency_id}"/></td>
+                            <td><t t-esc="line.journal_id.name" /></td>
+                            <td><t t-esc="line.journal_currency_id.name" /></td>
+                            <td><t t-esc="line.date" t-options="{'widget': 'date'}"/></td>
+                            <td><t t-esc="line.expected_amount" t-options="{'widget':'monetary', 'display_currency':line.currency_id}"/></td>
+                            <td><t t-esc="line.expected_amount_ref" t-options="{'widget':'monetary', 'display_currency':line.currency_id_ref}"/></td>
+                        </tr>
+                        <tr class="border-black o_subtotal">
+                            <td/>
+                            <td/>
+                            <td/>
+                            <td/>
+                            <td/>
+                            <td/>
+                            <td/>
+                            <td><t t-esc="o.lines_total_expected_amount" t-options="{'widget':'monetary', 'display_currency':line.currency_id}"/></td>
+                            <td><t t-esc="o.lines_total_expected_amount_ref" t-options="{'widget':'monetary', 'display_currency':line.currency_id_ref}"/></td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <h4>Summary</h4>
+                    <table  class="table table-sm" style="font-size: 12px; page-break-after: always;">
+                        <thead><tr>
+                            <th>Journal</th>
+                            <th>Expected Amount</th>
+                            <th>Expected Amount Ref</th>
+                        </tr></thead>
+                        <tbody>
+                        <tr t-foreach='o.summary_line_ids' t-as='line'>
+                            <td><t t-esc="line.journal_id.name" /></td>
+                            <td><t t-esc="line.expected_amount" t-options="{'widget':'monetary', 'display_currency':line.currency_id}"/></td>
+                            <td><t t-esc="line.expected_amount_ref" t-options="{'widget':'monetary', 'display_currency':line.currency_id_ref}"/></td>
+                        </tr>
+                        <tr class="border-black o_subtotal">
+                            <td/>
+                            <td><t t-esc="o.summary_total_expected_amount" t-options="{'widget':'monetary', 'display_currency':line.currency_id}"/></td>
+                            <td><t t-esc="o.summary_total_expected_amount_ref" t-options="{'widget':'monetary', 'display_currency':line.currency_id_ref}"/></td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <h4>Clients</h4>
+                    <table  class="table table-sm" style="font-size: 12px;">
+                        <thead><tr>
+                            <th>Customer Code</th>
+                            <th>Partner</th>
+                            <th>Sale Executive Code</th>
+                            <th>Expected Amount</th>
+                            <th>Expected Amount Ref</th>
+                        </tr></thead>
+                        <tbody>
+                        <tr t-foreach='o.client_line_ids' t-as='line'>
+                            <td><t t-esc="line.customer_code" /></td>
+                            <td><t t-esc="line.partner_id.name" /></td>
+                            <td><t t-esc="line.salesperson_code" /></td>
+                            <td><t t-esc="line.expected_amount" t-options="{'widget':'monetary', 'display_currency':line.currency_id}"/></td>
+                            <td><t t-esc="line.expected_amount_ref" t-options="{'widget':'monetary', 'display_currency':line.currency_id_ref}"/></td>
+                        </tr>
+                        <tr class="border-black o_subtotal">
+                            <td/>
+                            <td/>
+                            <td/>
+                            <td><t t-esc="o.client_total_expected_amount" t-options="{'widget':'monetary', 'display_currency':line.currency_id}"/></td>
+                            <td><t t-esc="o.client_total_expected_amount_ref" t-options="{'widget':'monetary', 'display_currency':line.currency_id_ref}"/></td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <h4>Salespersons</h4>
+                    <table  class="table table-sm" style="font-size: 12px;">
+                        <thead><tr>
+                            <th>Salesperson</th>
+                            <th>Sales Zone</th>
+                            <th>Expected Amount</th>
+                            <th>Expected Amount Ref</th>
+                        </tr></thead>
+                        <tbody>
+                        <tr t-foreach='o.salesperson_line_ids' t-as='line'>
+                            <td><t t-esc="line.salesperson.name" /></td>
+                            <td><t t-esc="line.team_id.name" /></td>
+                            <td><t t-esc="line.expected_amount" t-options="{'widget':'monetary', 'display_currency':line.currency_id}"/></td>
+                            <td><t t-esc="line.expected_amount_ref" t-options="{'widget':'monetary', 'display_currency':line.currency_id_ref}"/></td>
+                        </tr>
+                        <tr class="border-black o_subtotal">
+                            <td/>
+                            <td/>
+                            <td><t t-esc="o.salesperson_total_expected_amount" t-options="{'widget':'monetary', 'display_currency':line.currency_id}"/></td>
+                            <td><t t-esc="o.salesperson_total_expected_amount_ref" t-options="{'widget':'monetary', 'display_currency':line.currency_id_ref}"/></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </t>
+        </template>
+
+        <template id="cash_flow_report">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-set="lang" t-value="o.env.context.get('lang')"/>
+                    <t t-call="omegasoft_sale_cash_flow.cash_flow_template" t-lang="lang"/>
+                </t>
+            </t>
+        </template>
+
+        <record id="cash_flow_report_call" model="ir.actions.report">
+            <field name="name">Print</field>
+            <field name="model">cash.flow.report</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">omegasoft_sale_cash_flow.cash_flow_report</field>
+            <field name="report_file">omegasoft_sale_cash_flow.cash_flow_report</field>
+            <field name="print_report_name">(object.name)</field>
+            <field name="paperformat_id" ref="omegasoft_sale_cash_flow.paperformat_pformat" />
+            <field name="binding_model_id" ref="model_cash_flow_report"/>
+            <field name="binding_type">report</field>
+        </record>
+    </data>
+</odoo>

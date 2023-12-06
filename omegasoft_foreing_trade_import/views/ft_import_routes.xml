@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="ft_import_routes_form" model="ir.ui.view">
+        <field name="name">ft.import.routes.view.form</field>
+        <field name="model">ft.import.routes</field>
+        <field name="arch" type="xml">
+            <form string="Import routes">
+                <header>
+                    <field name="state" widget="statusbar" statusbar_visible="active,inactive" options="{'clickable': '1'}"/>
+                </header>
+                <sheet>
+                    <field name="active" invisible="1" />
+                    <group name='top'>
+                        <group name="left">
+                            <field name="name" required="1"/>
+                            <field name="code" required="1"/>
+                            <field name="origin_routes" options="{'no_create': 1, 'no_open': 1}"/>
+                            <field name="intermediate_1" options="{'no_create': 1, 'no_open': 1}"/>
+                            <field name="intermediate_2" options="{'no_create': 1, 'no_open': 1}"/>
+                            <field name="intermediate_3" options="{'no_create': 1, 'no_open': 1}"/>
+                            <field name="destination_id" options="{'no_create': 1, 'no_open': 1}"/>
+                        </group>
+                        <group name="right">
+                            <field name="estimated_traffic"/>
+                            <field name="real_transit"/>
+                            <field name="shipping_company_id" options="{'no_create': 1, 'no_open': 1}"/>
+                            <field name="free_days"/>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="currency_ref_id" invisible="1"/>
+                            <field name="freight_price_ref" groups="base.group_no_one"/>
+                            <field name="freight_price" />
+                            <field name="freight_concept_id"/>
+                            <field name="company_id" options="{'no_create': True}" groups="base.group_no_one" readonly="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="associated_expenses" string="Associated expenses">
+                            <field name="associated_expenses_ids">
+                                <tree editable="top" nolabel="1">
+                                    <field name="route_id" invisible="1"/>
+                                    <field name="product_id" options="{'no_create': 1, 'no_open': 1}"/>
+                                    <field name="concept_type" required="1"/>
+                                    <field name="cost_type" required="1"/>
+                                    <field name="fee"/>
+                                    <field name="currency_id" invisible="1"/>
+                                    <field name="fee_ref"/>
+                                    <field name="currency_ref_id" invisible="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page name="freight_rates" string="Freight Rates">
+                            <field name="freight_rate_ids">
+                                <tree editable="top" nolabel="1" delete="0">
+                                    <field name="route_id" invisible="1"/>
+                                    <field name="name"/>
+                                    <field name="freight_price_ref" optional="show"/>
+                                    <field name="freight_price" optional="show"/>
+                                    <field name="start_date" />
+                                    <field name="end_date" />
+                                    <field name="currency_id" invisible="1"/>
+                                    <field name="currency_ref_id" invisible="1"/>
+                                    <field name="create_uid" readonly="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+					<field name="message_follower_ids"/>
+					<field name="message_ids"/>
+				</div>
+            </form>
+        </field>
+    </record>
+
+    <record id="ft_import_routes_tree" model="ir.ui.view">
+        <field name="name">ft.import.routes.view.tree</field>
+        <field name="model">ft.import.routes</field>
+        <field name="arch" type="xml">
+            <tree string="Import routes">
+                <field name="code" />
+                <field name="name" />
+                <field name="company_id" groups="base.group_no_one"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="ft_import_routes_search" model="ir.ui.view">
+        <field name="name">ft.import.routes.search</field>
+        <field name="model">ft.import.routes</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" />
+                <separator />
+                <filter name="archived" string="Archived" domain="[('active', '=', False)]" />
+            </search>
+        </field>
+    </record>
+
+    <record id="ft_import_routes_action" model="ir.actions.act_window">
+        <field name="name">Import routes</field>
+        <field name="res_model">ft.import.routes</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- actions -->
+    <menuitem id="ft_import_routes_config" name="Import routes" action="ft_import_routes_action" parent="omegasoft_foreing_trade_import.omegasoft_foreing_trade_import_menu_configuration" sequence="16"/>
+</odoo>

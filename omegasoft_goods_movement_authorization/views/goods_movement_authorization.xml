@@ -1,0 +1,111 @@
+<odoo>
+
+    <record id="movement_authorization_form" model="ir.ui.view">
+        <field name="name">movement.authorization.view.form</field>
+        <field name="model">movement.authorization</field>
+        <field name="arch" type="xml">
+            <form string="Goods Movement Authorization">
+                <header>
+                    <button string="Validate" name="validate" type="object" class="oe_highlight"
+                        states="in_progress" />
+                    <field name="state" widget="statusbar" />
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1" />
+                        </h1>
+                    </div>
+                    <group name="top" string="">
+                        <group name="left" string="">
+                            <field name="date" attrs="{'readonly': [('state', '=', 'done')]}" />
+                            <field name="sealing" readonly="1" />
+                        </group>
+                    </group>
+
+                    <group name="top" string="">
+                        <group name="left" string="Driver Data">
+                            <field name="driver_domain_ids" invisible="True" />
+                            <field name="driver_id" domain="[('id', 'in', driver_domain_ids)]"
+                                options="{'no_open': 1, 'no_create': 1}"
+                                attrs="{'readonly': [('state', '=', 'done')]}" />
+                            <field name="vat" />
+                            <field name="vehicle_id" domain="[('driver_id', '=', driver_id)]"
+                                options="{'no_create': 1}"
+                                attrs="{'readonly': [('state', '=', 'done')]}" />
+                            <field name="brand_id" options="{'no_open': 1}" />
+                            <field name="color" />
+                            <field name="license_plate" />
+                        </group>
+                    </group>
+
+                    <div></div>
+
+                    <label for="dispatch_control_ids" string="Gestión de despacho"/>
+                    <field name="dispatch_control_ids"
+                        domain="[('state', '=', 'pending')]"
+                        options="{'no_create': 1, 'no_edit': 1}"
+                        attrs="{'readonly': [('state', '=', 'done')]}" 
+                        force_save="1"/>
+                    
+                    <div></div>
+
+                    <label for="shipping_tables" string="INFORMACIÓN DETALLADA DEL ENVÍO"/>
+                    <field name="shipping_tables" force_save="True" nolabel="1" />
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" />
+                    <field name="message_ids" />
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="movement_authorization_tree" model="ir.ui.view">
+        <field name="name">movement.authorization.view.tree</field>
+        <field name="model">movement.authorization</field>
+        <field name="arch" type="xml">
+            <tree string="Goods Movement Authorizations">
+                <field name="name" />
+                <field name="date" />
+                <field name="driver_id" />
+                <field name="vehicle_id" />
+                <field name="license_plate" />
+                <field name="state" widget="badge" decoration-warning="state == 'in_progress'"
+                    decoration-success="state == 'done'" />
+                <field name="company_id" groups="base.group_no_one" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="movement_authorization_search" model="ir.ui.view">
+        <field name="name">movement.authorization.search</field>
+        <field name="model">movement.authorization</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="driver_id" />
+                <field name="vat" />
+                <field name="vehicle_id" />
+                <field name="license_plate" />
+                <field name="brand_id" />
+                <separator />
+                <filter name="archived" string="Archived" domain="[('active', '=', False)]" />
+                <group expand="1" string="Group By">
+                    <filter string="State" name="state" context="{'group_by':'state'}" />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="movement_authorization_action" model="ir.actions.act_window">
+        <field name="name">Good Movement Authorization</field>
+        <field name="res_model">movement.authorization</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- actions -->
+    <menuitem id="movement_authorization_config" name="Goods Movement Authorization"
+        action="movement_authorization_action" parent="stock.menu_stock_warehouse_mgmt" sequence="5" />
+
+
+</odoo>

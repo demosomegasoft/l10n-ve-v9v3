@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<record id="cash_flow_report_tree_view" model="ir.ui.view">
+		<field name="name">cash.flow.report.tree.view</field>
+		<field name="model">cash.flow.report</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="name"/>
+				<field name="date_from"/>
+				<field name="date_to"/>
+				<field name="state" widget="badge" decoration-info="state == 'draft'" decoration-success="state == 'confirmed'" decoration-danger="state == 'cancel'"/>
+			</tree>
+		</field>
+	</record>
+	<record id="select_invoices_tree_view" model="ir.ui.view">
+		<field name="name">select.multi.invoices.tree.view</field>
+		<field name="model">account.move</field>
+		<field name="priority">999</field>
+		<field name="arch" type="xml">
+			<tree create="0" export_xlsx="0">
+				<field name="name"/>
+				<field name="date"/>
+				<field name="invoice_date_due" />
+				<field name="invoice_date_due" widget="remaining_days" string="Días vencidos"/>
+				<field name="partner_id" optional="show"/>
+				<field name="ref" optional="hide"/>
+				<field name="journal_id"/>
+				<field name="currency_id"/>
+				<field name="amount_total" string="Total" decoration-bf="1"/>
+				<field name="amount_residual"/>
+				<header>
+					<button string="Agregar facturas" name="add_invoices" type="object" class="oe_highlight"/>
+				</header>
+			</tree>
+		</field>
+	</record>
+	<record id="cash_flow_report_form_view" model="ir.ui.view">
+		<field name="name">cash.flow.report.form.view</field>
+		<field name="model">cash.flow.report</field>
+		<field name="arch" type="xml">
+			<form>
+				<header>
+					<button name="button_draft" states="cancel" string="Restablecer a borrador" type="object"/>
+					<button name="button_confirm" string="Confirmar" type="object" attrs="{'invisible': ['|', ('planned_line_ids', '=', []), ('state', '!=', 'draft')]}"/>
+					<button name="button_update" string="Actualizar diarios" type="object" attrs="{'invisible': [('state', '!=', 'confirmed')]}"/>
+					<button name="button_cancel" states="draft,confirmed" string="Cancelar" type="object"/>
+					<field name="state" widget="statusbar" statusbar_visible="draft,confirmed"/>
+				</header>
+				<sheet>
+					<div class="oe_title">
+						<h1 class="mt0"><field name="name" placeholder="Descripción"/></h1>
+					</div>
+					<group>
+						<group>
+							<field name="date_from"/>
+							<field name="date_to"/>
+						</group>
+						<group>
+							<field name="user_id" options="{'no_create': 1}"/>
+							<field name="company_id" groups="base.group_multi_company"/>
+							<field name="currency_id" invisible="1"/>
+							<field name="currency_ref_id" invisible="1"/>
+						</group>
+					</group>
+					<notebook>
+						<page name="lines" string="Previsto">
+							<field name="planned_line_ids" nolabel="1">
+								<tree editable="botton" no_open="1" create="0">
+									<field name="invoice_id"/>
+									<field name="partner_id"/>
+									<field name="invoice_date_due"/>
+									<field name="amount_residual"/>
+									<field name="journal_id" options="{'no_create': 1, 'no_open': 1}"/>
+									<field name="journal_currency_id"/>
+									<field name="date"/>
+									<field name="expected_amount"/>
+									<field name="expected_amount_ref"/>
+									<field name="currency_id" invisible="1"/>
+									<field name="currency_ref_id" invisible="1"/>
+									<field name="invoice_currency_id" invisible="1"/>
+								</tree>
+							</field>
+							<group>
+								<group>
+									<button name="add_invoices" string="Añadir facturas" type="object" attrs="{'invisible': [('state', '!=', 'draft')]}" colspan="4"/>
+								</group>
+								<group class="oe_subtotal_footer oe_right">
+									<field name="planned_total_amount"/>
+									<field name="planned_total_amount_ref"/>
+								</group>
+							</group>
+						</page>
+						<page string="Resumen">
+							<separator string="Resumen por diario"/>
+							<field name="summary_journal_line_ids" nolabel="1">
+								<tree no_open="1">
+									<field name="journal_id"/>
+									<field name="date_from" attrs="{'column_invisible': [('parent.state', '!=', 'confirmed')]}"/>
+									<field name="date_to" attrs="{'column_invisible': [('parent.state', '!=', 'confirmed')]}"/>
+									<field name="expected_amount" sum="Total"/>
+									<field name="expected_amount_ref" sum="Total Ref"/>
+									<field name="received_amount" sum="Total" attrs="{'column_invisible': [('parent.state', '!=', 'confirmed')]}"/>
+									<field name="received_amount_ref" sum="Total Ref" attrs="{'column_invisible': [('parent.state', '!=', 'confirmed')]}"/>
+									<field name="achievement" widget="percentage" attrs="{'column_invisible': [('parent.state', '!=', 'confirmed')]}"/>
+									<field name="currency_id" invisible="1"/>
+									<field name="currency_ref_id" invisible="1"/>
+								</tree>
+							</field>
+							<separator string="Resumen por cliente"/>
+							<field name="summary_partner_line_ids" nolabel="1">
+								<tree no_open="1">
+									<field name="partner_id"/>
+									<field name="date_from" attrs="{'column_invisible': [('parent.state', '!=', 'confirmed')]}"/>
+									<field name="date_to" attrs="{'column_invisible': [('parent.state', '!=', 'confirmed')]}"/>
+									<field name="expected_amount" sum="Total"/>
+									<field name="expected_amount_ref" sum="Total Ref"/>
+									<field name="received_amount" sum="Total" attrs="{'column_invisible': [('parent.state', '!=', 'confirmed')]}"/>
+									<field name="received_amount_ref" sum="Total Ref" attrs="{'column_invisible': [('parent.state', '!=', 'confirmed')]}"/>
+									<field name="achievement" widget="percentage" attrs="{'column_invisible': [('parent.state', '!=', 'confirmed')]}"/>
+									<field name="currency_id" invisible="1"/>
+									<field name="currency_ref_id" invisible="1"/>
+								</tree>
+							</field>
+							<separator string="Total ejecutado" attrs="{'invisible': [('state', '!=', 'confirmed')]}"/>
+							<field name="full_line_ids" nolabel="1" attrs="{'invisible': [('state', '!=', 'confirmed')]}">
+								<tree no_open="1">
+									<field name="invoice_id"/>
+									<field name="date_from"/>
+									<field name="date_to"/>
+									<field name="expected_amount" sum="Total"/>
+									<field name="expected_amount_ref" sum="Total Ref"/>
+									<field name="received_amount" sum="Total"/>
+									<field name="received_amount_ref" sum="Total Ref"/>
+									<field name="achievement" widget="percentage"/>
+									<field name="currency_id" invisible="1"/>
+									<field name="currency_ref_id" invisible="1"/>
+								</tree>
+							</field>
+						</page>
+					</notebook>
+				</sheet>
+				<div class="oe_chatter">
+					<field name="message_follower_ids" widget="mail_followers"/>
+					<field name="message_ids" widget="mail_thread"/>
+				</div>
+			</form>
+		</field>
+	</record>
+	<record id="cash_flow_report_action" model="ir.actions.act_window">
+		<field name="name">Proyección de flujo de caja</field>
+		<field name="res_model">cash.flow.report</field>
+		<field name="view_mode">tree,form</field>
+		<field name="view_ids" eval="[(5, 0, 0),
+			(0, 0, {'view_mode': 'tree', 'view_id': ref('cash_flow_report_tree_view')}),
+			(0, 0, {'view_mode': 'form', 'view_id': ref('cash_flow_report_form_view')})
+		]"/>
+	</record>
+	<menuitem id="cash_flow_report_menu" parent="l10n_ve_config_account.menu_l10n_ve_reports" action="cash_flow_report_action"/>
+</odoo>

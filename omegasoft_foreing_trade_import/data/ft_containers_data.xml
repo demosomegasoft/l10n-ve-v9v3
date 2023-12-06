@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="container_dry_20" model="ft.containers">
+          <field name="name">CONTENEDOR DRY 20 PIES</field>
+          <field name="code">DRY20</field>
+          <field name="inside_length">5.9</field>
+          <field name="inside_width">2.35</field>
+          <field name="inside_height">2.39</field>
+          <field name="door_height">2.28</field>
+          <field name="door_width">2.34</field>
+          <field name="cubic_capacity">33.2</field>
+          <field name="tare">2300</field>
+          <field name="maximum_load">25000</field>
+          <field name="delete_container" eval="True"/>
+          <field name="company_id" ref="base.main_company"/>
+        </record>
+
+        <record id="container_dry_40" model="ft.containers">
+          <field name="name">CONTENEDOR DRY 40 PIES</field>
+          <field name="code">DRY40</field>
+          <field name="inside_length">12.03</field>
+          <field name="inside_width">2.35</field>
+          <field name="inside_height">2.39</field>
+          <field name="door_height">2.28</field>
+          <field name="door_width">2.34</field>
+          <field name="cubic_capacity">67.6</field>
+          <field name="tare">3750</field>
+          <field name="maximum_load">27600</field>
+          <field name="delete_container" eval="True"/>
+          <field name="company_id" ref="base.main_company"/>
+        </record>
+
+        <record id="container_flat_rack_20" model="ft.containers">
+          <field name="name">CONTENEDOR FLAT RACK 20 PIES</field>
+          <field name="code">FLCK20</field>
+          <field name="inside_length">5.94</field>
+          <field name="inside_width">2.35</field>
+          <field name="inside_height">2.35</field>
+          <field name="door_height">0</field>
+          <field name="door_width">0</field>
+          <field name="cubic_capacity">32.7</field>
+          <field name="tare">2360</field>
+          <field name="maximum_load">30140</field>
+          <field name="delete_container" eval="True"/>
+          <field name="company_id" ref="base.main_company"/>
+        </record>
+
+        <record id="container_flat_rack_40" model="ft.containers">
+          <field name="name">CONTENEDOR FLAT RACK 40 PIES</field>
+          <field name="code">FLCK40</field>
+          <field name="inside_length">12.13</field>
+          <field name="inside_width">2.40</field>
+          <field name="inside_height">2.14</field>
+          <field name="door_height">0</field>
+          <field name="door_width">0</field>
+          <field name="cubic_capacity">62.2</field>
+          <field name="tare">5000</field>
+          <field name="maximum_load">40000</field>
+          <field name="delete_container" eval="True"/>
+          <field name="company_id" ref="base.main_company"/>
+        </record>
+
+        <record id="container_hq_dry_40" model="ft.containers">
+          <field name="name">CONTENEDOR HQ DRY 40 PIES</field>
+          <field name="code">HQ40</field>
+          <field name="inside_length">12.03</field>
+          <field name="inside_width">2.35</field>
+          <field name="inside_height">2.70</field>
+          <field name="door_height">2.58</field>
+          <field name="door_width">2.34</field>
+          <field name="cubic_capacity">76.40</field>
+          <field name="tare">3940</field>
+          <field name="maximum_load">28560</field>
+          <field name="delete_container" eval="True"/>
+          <field name="company_id" ref="base.main_company"/>
+        </record>
+
+        <record id="container_hq_dry_45" model="ft.containers">
+          <field name="name">CONTENEDOR HQ DRY 45 PIES</field>
+          <field name="code">HQ45</field>
+          <field name="inside_length">13.56</field>
+          <field name="inside_width">2.35</field>
+          <field name="inside_height">2.70</field>
+          <field name="door_height">2.58</field>
+          <field name="door_width">2.34</field>
+          <field name="cubic_capacity">86</field>
+          <field name="tare">4820</field>
+          <field name="maximum_load">27860</field>
+          <field name="delete_container" eval="True"/>
+          <field name="company_id" ref="base.main_company"/>
+        </record>
+
+        <record id="container_open_top_20" model="ft.containers">
+          <field name="name">CONTENEDOR OPEN TOP 20 PIES</field>
+          <field name="code">OP20</field>
+          <field name="inside_length">5.9</field>
+          <field name="inside_width">2.35</field>
+          <field name="inside_height">2.38</field>
+          <field name="door_height">2.34</field>
+          <field name="door_width">2.28</field>
+          <field name="cubic_capacity">32.50</field>
+          <field name="tare">2350</field>
+          <field name="maximum_load">28130</field>
+          <field name="delete_container" eval="True"/>
+          <field name="company_id" ref="base.main_company"/>
+        </record>
+
+        <record id="container_open_top_40" model="ft.containers">
+          <field name="name">CONTENEDOR OPEN TOP 40 PIES</field>
+          <field name="code">OP40</field>
+          <field name="inside_length">12.03</field>
+          <field name="inside_width">2.35</field>
+          <field name="inside_height">2.38</field>
+          <field name="door_height">2.29</field>
+          <field name="door_width">2.34</field>
+          <field name="cubic_capacity">66.40</field>
+          <field name="tare">3850</field>
+          <field name="maximum_load">26630</field>
+          <field name="delete_container" eval="True"/>
+          <field name="company_id" ref="base.main_company"/>
+        </record>
+
+        <record id="container_plataforma_20" model="ft.containers">
+          <field name="name">CONTENEDOR PLATAFORMA 20 PIES</field>
+          <field name="code">PLT20</field>
+          <field name="inside_length">6.06</field>
+          <field name="inside_width">2.44</field>
+          <field name="inside_height">0</field>
+          <field name="door_height">0</field>
+          <field name="door_width">0</field>
+          <field name="cubic_capacity">0</field>
+          <field name="tare">2740</field>
+          <field name="maximum_load">31260</field>
+          <field name="delete_container" eval="True"/>
+          <field name="company_id" ref="base.main_company"/>
+        </record>
+
+        <record id="container_plataforma_40" model="ft.containers">
+          <field name="name">CONTENEDOR PLATAFORMA 40 PIES</field>
+          <field name="code">PLT40</field>
+          <field name="inside_length">12.19</field>
+          <field name="inside_width">2.44</field>
+          <field name="inside_height">0</field>
+          <field name="door_height">0</field>
+          <field name="door_width">0</field>
+          <field name="cubic_capacity">0</field>
+          <field name="tare">5700</field>
+          <field name="maximum_load">39300</field>
+          <field name="delete_container" eval="True"/>
+          <field name="company_id" ref="base.main_company"/>
+        </record>
+
+        <record id="container_reefer_20" model="ft.containers">
+          <field name="name">CONTENEDOR REEFER 20 PIES</field>
+          <field name="code">REE20</field>
+          <field name="inside_length">5.44</field>
+          <field name="inside_width">2.29</field>
+          <field name="inside_height">2.27</field>
+          <field name="door_height">2.10</field>
+          <field name="door_width">2.23</field>
+          <field name="cubic_capacity">28.3</field>
+          <field name="tare">3080</field>
+          <field name="maximum_load">27400</field>
+          <field name="delete_container" eval="True"/>
+          <field name="company_id" ref="base.main_company"/>
+        </record>
+
+        <record id="container_reefer_40" model="ft.containers">
+          <field name="name">CONTENEDOR REEFER 40 PIES</field>
+          <field name="code">REE40</field>
+          <field name="inside_length">11.56</field>
+          <field name="inside_width">2.28</field>
+          <field name="inside_height">2.25</field>
+          <field name="door_height">2.26</field>
+          <field name="door_width">2.29</field>
+          <field name="cubic_capacity">59.30</field>
+          <field name="tare">4800</field>
+          <field name="maximum_load">27700</field>
+          <field name="delete_container" eval="True"/>
+          <field name="company_id" ref="base.main_company"/>
+        </record>
+
+        <record id="container_hq_reefer_40" model="ft.containers">
+          <field name="name">CONTENEDOR HQ REEFER 40 PIES</field>
+          <field name="code">REHQ40</field>
+          <field name="inside_length">11.58</field>
+          <field name="inside_width">2.29</field>
+          <field name="inside_height">2.40</field>
+          <field name="door_height">2.57</field>
+          <field name="door_width">2.29</field>
+          <field name="cubic_capacity">67.30</field>
+          <field name="tare">4480</field>
+          <field name="maximum_load">29520</field>
+          <field name="delete_container" eval="True"/>
+          <field name="company_id" ref="base.main_company"/>
+        </record>
+
+        <record id="container_reefer_45" model="ft.containers">
+          <field name="name">CONTENEDOR REEFER 45 PIES</field>
+          <field name="code">REE45</field>
+          <field name="inside_length">11.57</field>
+          <field name="inside_width">2.27</field>
+          <field name="inside_height">2.55</field>
+          <field name="door_height">2.26</field>
+          <field name="door_width">2.29</field>
+          <field name="cubic_capacity">67</field>
+          <field name="tare">4850</field>
+          <field name="maximum_load">29150</field>
+          <field name="delete_container" eval="True"/>
+          <field name="company_id" ref="base.main_company"/>
+        </record>
+
+    </data>
+</odoo>

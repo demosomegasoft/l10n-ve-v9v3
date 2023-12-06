@@ -1,0 +1,132 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="ft_forecast_view_form" model="ir.ui.view">
+        <field name="name">ft.forecast.view.form</field>
+        <field name="model">ft.forecast</field>
+        <field name="arch" type="xml">
+            <form string="Forecast">
+                <sheet>
+                    <field name="currency_id" invisible="1"/>
+                    <field name="currency_ref_id" invisible="1"/>
+                    <group name='top'>
+                        <group name="left" string="General information">
+                            <field name="nationalization_rate"/>
+                            <field name="value_or"/>
+                            <field name="value_or_ref"/>
+                            <field name="capacities_container" invisible="1"/>
+                            <separator string="formulation"/>
+                            <field name="split_method" force_save="1"/>
+                            <field name="container_type_id" attrs="{'invisible': [('capacities_container', '=', False), ('split_method', '!=', 'by_Container')], 'required': [('split_method', '=', 'by_Container')]}" options="{'no_create': 1, 'no_open': 1}"/>
+                            <field name="number_container" attrs="{'invisible': [('capacities_container', '=', False), ('split_method', '!=', 'by_Container')], 'required': [('split_method', '=', 'by_Container')]}"/>
+                        </group>
+                        <group name="right" string="forecast taxes">
+                            <label for='ad_valorem'/>
+                            <div>
+                                <field name="ad_valorem" class="oe_inline"/>
+                                -
+                                <field name="ad_valorem_ref" nolabel="1" class="oe_inline"/>
+                            </div>
+
+                            <label for='tsa'/>
+                            <div class="oe_inline">
+                                <field name="tsa" class="oe_inline"/>
+                                -
+                                <field name="tsa_ref" nolabel="1" class="oe_inline"/>
+                            </div>
+
+                            <label for='tss'/>
+                            <div class="oe_inline">
+                                <field name="tss" class="oe_inline"/>
+                                -
+                                <field name="tss_ref" nolabel="1" class="oe_inline"/>
+                            </div>
+
+                            <label for='iva'/>
+                            <div class="oe_inline">
+                                <field name="iva" class="oe_inline"/>
+                                -
+                                <field name="iva_ref" nolabel="1" class="oe_inline"/>
+                            </div>
+
+                            <label for='amount_for_delay'/>
+                            <div class="oe_inline">
+                                <field name="amount_for_delay" class="oe_inline"/>
+                                -
+                                <field name="amount_for_delay_ref" nolabel="1" class="oe_inline"/>
+                            </div>
+
+                            <label for='amount_for_delay'/>
+                            <div class="oe_inline">
+                                <field name="storage_delay" class="oe_inline"/>
+                                -
+                                <field name="storage_delay_ref" nolabel="1" class="oe_inline"/>
+                            </div>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="ft_forecast_product" string="Product associated">
+                            <field name="forecast_product_ids">
+                                <tree editable="bottom" nolabel="1" create="0" delete="0">
+                                    <field name="currency_id" invisible="1"/>
+                                    <field name="currency_ref_id" invisible="1"/>
+                                    <field name="product_id" />
+                                    <field name="product_qty" />
+                                    <field name="product_uom" optional="hide"/>
+                                    <field name="dimensions" optional="show"/>
+                                    <field name="fob" optional="show"/>
+                                    <field name="fob_ref" optional="hide"/>
+                                    <field name="cif" optional="show"/>
+                                    <field name="cif_ref" optional="hide"/>
+                                    <field name="in_port" optional="show"/>
+                                    <field name="in_port_ref" optional="hide"/>
+                                    <field name="c_national" optional="show"/>
+                                    <field name="c_national_ref" optional="hide"/>
+                                    <field name="in_warehouse" optional="show"/>
+                                    <field name="in_warehouse_ref" optional="hide"/>
+                                    <field name="sale_price" optional="show"/>
+                                    <field name="sale_price_ref" optional="hide"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page name="ft_associated_expenses" string="Expected expenses">
+                            <field name="associated_expenses_ids">
+                                <tree editable="bottom" nolabel="1">
+                                    <field name="product_id" required="1"/>
+                                    <field name="concept_type" required="1"/>
+                                    <field name="cost_type" required="1"/>
+                                    <field name="fee"/>
+                                    <field name="currency_id" invisible="1"/>
+                                    <field name="fee_ref"/>
+                                    <field name="currency_ref_id" invisible="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+					<field name="message_follower_ids"/>
+					<field name="message_ids"/>
+				</div>
+            </form>
+        </field>
+    </record>
+
+    <!-- <record id="ft_forecast_tree" model="ir.ui.view">
+        <field name="name">ft.forecast.view.tree</field>
+        <field name="model">ft.forecast</field>
+        <field name="arch" type="xml">
+            <tree string="Forecast" create="0">
+                <field name="import_id" />
+            </tree>
+        </field>
+    </record> -->
+
+    <record id="ft_forecast_action" model="ir.actions.act_window">
+        <field name="name">Forecast</field>
+        <field name="res_model">ft.forecast</field>
+        <field name="view_mode">form</field>
+    </record>
+
+    <!-- <menuitem id="ft_forecast_config" name="Forecast" action="ft_forecast_action" parent="omegasoft_foreing_trade_import.omegasoft_foreing_trade_import_menu_configuration" sequence="80"/> -->
+
+</odoo>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_sale_order_form_inherit" model="ir.ui.view">
+        <field name="name">view.sale.order.form.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form" />
+        <field name="arch" type="xml">
+            <xpath expr="(//button[@name='action_confirm'])[2]" position="replace">
+            </xpath>
+            <xpath expr="(//button[@name='action_confirm'])[1]" position="replace">
+                <button
+                    string="Request for approval"
+                    name="action_request_for_approval"
+                    type="object"
+                    class="oe_highlight"
+                    attrs="{
+                        'invisible': [
+                            ('approval_state', 'not in', ['not_approved', 'rejected'])
+                        ]
+                    }"/>
+                <button
+                    string="Approve Sale Order"
+                    groups="omegasoft_credit_limit.group_sale_order_approver"
+                    name="action_approve_sale_order"
+                    type="object"
+                    class="oe_highlight"
+                    attrs="{
+                        'invisible': [
+                            ('approval_state', 'not in', ['to_approve'])
+                        ]
+                    }"/>
+                <button
+                    string="Reject Sale Order"
+                    groups="omegasoft_credit_limit.group_sale_order_approver"
+                    name="action_reject_sale_order"
+                    type="object"
+                    class="oe_highlight"
+                    attrs="{
+                        'invisible': [
+                            ('approval_state', 'not in', ['to_approve'])
+                        ]
+                    }"/>
+            </xpath>
+            <xpath expr="//field[@name='payment_term_id']" position="after">
+                <field
+                    name="approval_state"
+                    readonly="1"
+                    widget="badge"
+                    decoration-info="approval_state == 'not_approved'"
+                    decoration-warning="approval_state == 'to_approve'"
+                    decoration-success="approval_state == 'approved'"
+                    decoration-danger="approval_state == 'rejected'"
+                    decoration-muted="approval_state == 'canceled'"/>
+            </xpath>
+            <xpath expr="//header" position="after">
+                <field name="active_credit" invisible="True" />
+                <field name="limit_exceeded" invisible="True" />
+                <field name="credit_currency_id" invisible="True" />
+                <field name="order_amount" invisible="True" />
+                <div class="alert alert-info text-center o_form_header" role="status"
+                    attrs="{'invisible': ['|',('active_credit', '=', False),('state', 'in', ['done', 'cancel'])]}">
+                    <div>
+                        <strong>
+                            Credit limit:&#32;
+                            <field name="amount_limit" widget="monetary" options="{'currency_field': 'credit_currency_id'}"/>&#32;
+                            Available credit:&#32;
+                            <field name="credit_available" widget="monetary" options="{'currency_field': 'credit_currency_id'}"/>&#32;
+                            Amount due:&#32;
+                            <field name="credit_total_due" />&#32; <br></br>
+                            Sales without invoice:&#32;
+                            <field name="sale_invoiceless_amount" />
+                            expired amount:&#32;
+                            <field name="credit_total_overdue" />&#32;
+                        </strong>
+                    </div>
+                </div>
+                <div class="alert alert-danger text-center o_form_header" role="status"
+                    attrs="{'invisible': ['|','|', ('limit_exceeded', '=', False), ('active_credit', '=', False), ('state', 'in', ['done', 'cancel'])]}">
+                    <div>
+                        <strong>The customer has exceeded the credit limit for:&#32;<field
+                                name="exceeded_amount" /></strong>
+                    </div>
+                </div>
+            </xpath>
+
+            <!-- <xpath expr="//button[@name='action_cancel']" position="before">
+                <button string="Approve" name="action_confirm" class="oe_highlight" type="object"
+                    states="awaiting_approval"
+                    groups="omegasoft_sale_order_approvals.group_sale_order_approver" />
+            </xpath> -->
+            <xpath expr="//button[@name='action_cancel']" position="attributes">
+                <attribute name="states">draft,sent,sale,to_approve</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_order_tree_sale_approval" model="ir.ui.view">
+        <field name="name">sale.order.tree.sale.approval</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='amount_total']" position="before">
+                <field
+                    name="approval_state"
+                    readonly="1"
+                    widget="badge"
+                    decoration-info="approval_state == 'not_approved'"
+                    decoration-warning="approval_state == 'to_approve'"
+                    decoration-success="approval_state == 'approved'"
+                    decoration-danger="approval_state == 'rejected'"
+                    decoration-muted="approval_state == 'canceled'"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_quotation_tree_with_onboarding_sale_approval" model="ir.ui.view">
+        <field name="name">sale.order.tree.onboarding.sale.approval</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_quotation_tree_with_onboarding"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='amount_total']" position="before">
+                <field
+                    name="approval_state"
+                    readonly="1"
+                    widget="badge"
+                    decoration-info="approval_state == 'not_approved'"
+                    decoration-warning="approval_state == 'to_approve'"
+                    decoration-success="approval_state == 'approved'"
+                    decoration-danger="approval_state == 'rejected'"
+                    decoration-muted="approval_state == 'canceled'"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
